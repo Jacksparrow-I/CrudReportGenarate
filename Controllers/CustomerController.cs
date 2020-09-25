@@ -8,9 +8,13 @@ using Microsoft.AspNetCore.Cors;
 using CrudReportGenerate.Model.Common;
 using CrudReportGenerate.Repository;
 using CrudReportGenerate.Interface;
+using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrudReportGenerate.Controllers
 {
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+
     [Route("api/[controller]")]
     [EnableCors("AllowMyOrigin")]
     [ApiController]
@@ -38,15 +42,19 @@ namespace CrudReportGenerate.Controllers
         [HttpPost("UpdateCustomer/{CustomerNo}")]
         public int UpdateCustomer([FromBody] Customer CustomerModel, string CustomerNo, string CustomerName)
         {
-            //**** move this below code to dependency injection ****
             return _ICustomer.UpdateCustomer(CustomerModel, CustomerNo, CustomerName);
         }
 
         [HttpDelete("DeleteCustomer/{CustomerNo}")]
         public int DeleteCustomer(string CustomerNo)
         {
-            //**** move this below code to dependency injection ****
             return _ICustomer.DeleteCustomer(CustomerNo);
+        }
+
+        [HttpGet("CustomerById/{CustomerNo}")]
+        public Customer CustomerById(string CustomerNo)
+        {
+            return _ICustomer.CustomerById(CustomerNo);
         }
 
 

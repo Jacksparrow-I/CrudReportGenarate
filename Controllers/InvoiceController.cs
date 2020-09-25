@@ -8,9 +8,12 @@ using Microsoft.AspNetCore.Cors;
 using CrudReportGenerate.Model.Common;
 using CrudReportGenerate.Repository;
 using CrudReportGenerate.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CrudReportGenerate.Controllers
 {
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+
     [Route("api/[controller]")]
     [EnableCors("AllowMyOrigin")]
     [ApiController]
@@ -47,6 +50,12 @@ namespace CrudReportGenerate.Controllers
         {
             //**** move this below code to dependency injection ****
             return _IInvoice.DeleteInvoice(InvoiceNo);
+        }
+
+        [HttpGet("InvoiceById/{InvoiceNo}")]
+        public Invoice InvoiceById(string InvoiceNo)
+        {
+            return _IInvoice.InvoiceById(InvoiceNo);
         }
     }
 }

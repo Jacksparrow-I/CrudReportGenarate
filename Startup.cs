@@ -8,10 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Logging;
 using CrudReportGenerate.Model.Common;
 using CrudReportGenerate.Repository;
 using CrudReportGenerate.Interface;
+using System.Text;
+using System.IO;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace CrudReportGenarate
 {
@@ -36,9 +41,43 @@ namespace CrudReportGenarate
             });
 
             services.AddControllers();
+            var appSettingsSection = Configuration.GetSection("AppSetting");
+            services.Configure<AppSetting>(appSettingsSection);
+
+            services.Configure<FormOptions>(o => {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
+
+            //JWT Authentication
+            var appSetting = appSettingsSection.Get<AppSetting>();
+            var key = Encoding.ASCII.GetBytes(appSetting.Key);
+
+            services.AddAuthentication(au =>
+            {
+                au.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                au.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(jwt =>
+            {
+                jwt.RequireHttpsMetadata = false;
+                jwt.SaveToken = true;
+                jwt.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+            services.AddControllers();
             services.AddScoped<ICustomer, CustomerRepository>();
             services.AddScoped<IInvoice, InvoiceRepository>();
             services.AddScoped<IPayment, PaymentRepository>();
+            services.AddScoped<ILogin, LoginRepo>();
+            services.AddScoped<IAuthenticateService, AuthenticateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

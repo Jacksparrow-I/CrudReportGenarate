@@ -69,21 +69,23 @@ namespace CrudReportGenerate.Repository
                     Cust.InvoiceDate = InvoiceModel.InvoiceDate;
                     Cust.InvoiceAmount = InvoiceModel.InvoiceAmount;
                     Cust.PaymentDueDate = InvoiceModel.PaymentDueDate;
-                    dBContext.TblInvoices.Add(Cust);
+                    //dBContext.TblInvoices.Add(Cust);
                     InvoiceNo = Cust.InvoiceNo;
 
-                    bool Invoicexist = Items.Any(asd => asd.InvoiceNo == InvoiceNo);
-                    if (Invoicexist == true)
+                    bool Inv = Items.Any(asd => asd.InvoiceNo == InvoiceNo);
+                    if (Inv == true)
                     {
                         returnVal = -1;
                     }
-                    else
+
+                    if (Inv == false)
                     {
+                        dBContext.TblInvoices.Add(Cust);
                         returnVal = dBContext.SaveChanges();
                     }
 
                     //returnVal = dBContext.SaveChanges();  
-                    
+
 
                 }
             }
@@ -126,6 +128,19 @@ namespace CrudReportGenerate.Repository
                     Cust.InvoiceAmount = InvoiceModel.InvoiceAmount;
                     Cust.PaymentDueDate = InvoiceModel.PaymentDueDate;
                     dBContext.TblInvoices.Update(Cust);
+                    InvoiceNo = Cust.InvoiceNo;
+
+                    bool Inv = Items.Any(asd => asd.InvoiceNo == InvoiceNo);
+                    if (Inv == true)
+                    {
+                        returnVal = -1;
+                    }
+
+                    if (Inv == false)
+                    {
+                        dBContext.TblInvoices.Add(Cust);
+                        returnVal = dBContext.SaveChanges();
+                    }
                     //CustomerNo = Cust.CustomerNo;
                     //CustomerName = Cust.CustomerName;
 
@@ -181,6 +196,33 @@ namespace CrudReportGenerate.Repository
                 Console.WriteLine(ex.Message);
             }
             return returnVal;
+        }
+
+        public Invoice InvoiceById(string InvoiceNo)
+        {
+            Invoice Cust = new Invoice();
+            try
+            {
+                using (var dBContext = new CustomerReportContext())
+                {
+                    var dep = dBContext.TblInvoices.Where(x => x.InvoiceNo == InvoiceNo).SingleOrDefault();
+
+                    if (dep != null)
+                    {
+                        Cust.InvoiceNo = dep.InvoiceNo;
+                        Cust.CustomerNo = dep.CustomerNo;
+                        Cust.InvoiceDate = dep.InvoiceDate;
+                        Cust.InvoiceAmount = dep.InvoiceAmount;
+                        Cust.PaymentDueDate = dep.PaymentDueDate;
+                    }
+                    return Cust;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
     }
 }

@@ -60,16 +60,18 @@ namespace CrudReportGenerate.Repository
                     Cust = new TblCustomer();
                     Cust.CustomerNo = CustomerModel.CustomerNo;
                     Cust.CustomerName = CustomerModel.CustomerName;
-                    dBContext.TblCustomer.Add(Cust);
+                    
                     CustomerNo = Cust.CustomerNo;
 
-                    bool Invoicexist = Items.Any(asd => asd.CustomerNo == CustomerNo);
-                    if (Invoicexist == true)
+                    bool CustNo = Items.Any(asd => asd.CustomerNo == CustomerNo);
+                    if (CustNo == true)
                     {
                         returnVal = -1;
                     }
-                    else
+
+                    if (CustNo == false)
                     {
+                        dBContext.TblCustomer.Add(Cust);
                         returnVal = dBContext.SaveChanges();
                     }
 
@@ -166,6 +168,31 @@ namespace CrudReportGenerate.Repository
                 Console.WriteLine(ex.Message);
             }
             return returnVal;
+        }
+
+        public Customer CustomerById(string CustomerNo)
+        {
+            Customer Cust = new Customer();
+            try
+            {
+                using (var dBContext = new CustomerReportContext())
+                {
+                    var dep = dBContext.TblCustomer.Where(x => x.CustomerNo == CustomerNo).SingleOrDefault();
+
+                    if (dep != null)
+                    {
+                        Cust.CustomerNo = dep.CustomerNo;
+                        Cust.CustomerName = dep.CustomerName;
+                    }
+                    return Cust;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
         }
     }
 }

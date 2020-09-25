@@ -19,6 +19,7 @@ namespace CrudReportGenerate.Model.Entity
         public virtual DbSet<TblCustomer> TblCustomer { get; set; }
         public virtual DbSet<TblInvoices> TblInvoices { get; set; }
         public virtual DbSet<TblPayment> TblPayment { get; set; }
+        public virtual DbSet<Registration> Registration { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -93,6 +94,19 @@ namespace CrudReportGenerate.Model.Entity
                 entity.Property(e => e.PaymentDate)
                     .HasColumnName("Payment_Date")
                     .HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<Registration>(entity =>
+            {
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

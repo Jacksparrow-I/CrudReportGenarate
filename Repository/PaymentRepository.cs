@@ -120,6 +120,17 @@ namespace CrudReportGenerate.Repository
                     Cust.PaymentDate = PaymentModel.PaymentDate;
                     Cust.PaymentAmount = PaymentModel.PaymentAmount;
                     dBContext.TblPayment.Update(Cust);
+                    PaymentNo = Cust.PaymentNo;
+
+                    bool Invoicexist = Items.Any(asd => asd.PaymentNo == PaymentNo);
+                    if (Invoicexist == true)
+                    {
+                        returnVal = -1;
+                    }
+                    else
+                    {
+                        returnVal = dBContext.SaveChanges();
+                    }
                     //CustomerNo = Cust.CustomerNo;
                     //CustomerName = Cust.CustomerName;
 
@@ -175,6 +186,33 @@ namespace CrudReportGenerate.Repository
                 Console.WriteLine(ex.Message);
             }
             return returnVal;
+        }
+
+        public Payment PaymentById(string PaymentNo)
+        {
+            Payment Cust = new Payment();
+            try
+            {
+                using (var dBContext = new CustomerReportContext())
+                {
+                    var dep = dBContext.TblPayment.Where(x => x.PaymentNo == PaymentNo).SingleOrDefault();
+
+                    if (dep != null)
+                    {
+                        Cust.PaymentNo = dep.PaymentNo;
+                        Cust.InvoiceNo = dep.InvoiceNo;
+                        Cust.PaymentDate = dep.PaymentDate;
+                        Cust.PaymentAmount = dep.PaymentAmount;
+                    }
+                    return Cust;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
         }
     }
 }
