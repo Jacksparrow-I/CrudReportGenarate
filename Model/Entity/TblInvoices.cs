@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CrudReportGenerate.Models.Entity
+namespace CrudReportGenerate.Model.Entity
 {
     public partial class TblInvoices
     {

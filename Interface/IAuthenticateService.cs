@@ -1,5 +1,5 @@
-﻿using CoreEntityApi.Model.Common;
-using CrudReportGenerate.Model.Common;
+﻿using CrudReportGenerate.Model.Common;
+using CrudReportGenerate.Model.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,9 @@ namespace CrudReportGenerate.Interface
 {
     public interface IAuthenticateService
     {
-        User Authenticate(string userName, string password);
+        public Userdata Authenticate(Userdata Model);
+        public List<User> GetLogindetails();
+        public int Registration(Userdata UserModel, string UserName);
+        public int Editprofile(Userdata UserModel, string UserName, int UserId);
     }
 }

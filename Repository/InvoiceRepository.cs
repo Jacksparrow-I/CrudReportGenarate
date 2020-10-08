@@ -1,7 +1,6 @@
 ﻿using CrudReportGenerate.Interface;
 using CrudReportGenerate.Model.Common;
 using CrudReportGenerate.Model.Entity;
-using CrudReportGenerate.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,7 +67,7 @@ namespace CrudReportGenerate.Repository
                     Cust.CustomerNo = InvoiceModel.CustomerNo;
                     Cust.InvoiceDate = InvoiceModel.InvoiceDate;
                     Cust.InvoiceAmount = InvoiceModel.InvoiceAmount;
-                    Cust.PaymentDueDate = InvoiceModel.PaymentDueDate;
+                    Cust.PaymentDueDate = Cust.InvoiceDate.AddDays(30);
                     //dBContext.TblInvoices.Add(Cust);
                     InvoiceNo = Cust.InvoiceNo;
 
@@ -117,7 +116,7 @@ namespace CrudReportGenerate.Repository
                         Items.Add(get);
                     }
 
-                    Models.Entity.TblInvoices Cust = new Models.Entity.TblInvoices();
+                    Model.Entity.TblInvoices Cust = new Model.Entity.TblInvoices();
                     //Add record
 
                     Cust = dBContext.TblInvoices.FirstOrDefault(asd => asd.InvoiceNo == InvoiceModel.InvoiceNo);
@@ -126,7 +125,7 @@ namespace CrudReportGenerate.Repository
                     Cust.CustomerNo = InvoiceModel.CustomerNo;
                     Cust.InvoiceDate = InvoiceModel.InvoiceDate;
                     Cust.InvoiceAmount = InvoiceModel.InvoiceAmount;
-                    Cust.PaymentDueDate = InvoiceModel.PaymentDueDate;
+                    Cust.PaymentDueDate = Cust.InvoiceDate.AddDays(30);
                     dBContext.TblInvoices.Update(Cust);
                     InvoiceNo = Cust.InvoiceNo;
 
@@ -176,19 +175,27 @@ namespace CrudReportGenerate.Repository
             {
                 using (var dBContext = new CustomerReportContext())
                 {
-                    Models.Entity.TblInvoices emp = new Models.Entity.TblInvoices();
-                    Customer DeleteItem = new Customer();
+                    Model.Entity.TblPayment inv = new Model.Entity.TblPayment();
+                    Model.Entity.TblInvoices emp = new Model.Entity.TblInvoices();
+                    //Customer DeleteItem = new Customer();
                     //Add record
                     {
+                        
                         emp = dBContext.TblInvoices.FirstOrDefault(asd => asd.InvoiceNo == InvoiceNo);
-                        if (emp != null)
+                        inv = dBContext.TblPayment.FirstOrDefault(asd => asd.InvoiceNo == InvoiceNo);
+                        if (inv == null)
                         {
-                            //emp = new Employes();
-                            //emp.Id = EmployesModel.Id;
-                            dBContext.TblInvoices.Remove(emp);
+                            if (emp != null)
+                            {
+                                dBContext.TblInvoices.Remove(emp);
+                                returnVal = dBContext.SaveChanges();
+                            }
+                        }
+                        else
+                        {
+                            returnVal = -1;
                         }
                     }
-                    returnVal = dBContext.SaveChanges();
                 }
             }
             catch (Exception ex)

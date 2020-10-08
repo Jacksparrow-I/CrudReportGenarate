@@ -1,7 +1,6 @@
 ﻿using CrudReportGenerate.Interface;
 using CrudReportGenerate.Model.Common;
 using CrudReportGenerate.Model.Entity;
-using CrudReportGenerate.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,7 +109,7 @@ namespace CrudReportGenerate.Repository
                         Items.Add(get);
                     }
 
-                    Models.Entity.TblPayment Cust = new Models.Entity.TblPayment();
+                    Model.Entity.TblPayment Cust = new Model.Entity.TblPayment();
                     //Add record
 
                     Cust = dBContext.TblPayment.FirstOrDefault(asd => asd.PaymentNo == PaymentModel.PaymentNo);
@@ -166,7 +165,7 @@ namespace CrudReportGenerate.Repository
             {
                 using (var dBContext = new CustomerReportContext())
                 {
-                    Models.Entity.TblPayment emp = new Models.Entity.TblPayment();
+                    Model.Entity.TblPayment emp = new Model.Entity.TblPayment();
                     Customer DeleteItem = new Customer();
                     //Add record
                     {

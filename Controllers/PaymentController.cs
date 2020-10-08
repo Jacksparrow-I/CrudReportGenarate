@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CrudReportGenerate.Controllers
 {
-    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
 
     [Route("api/[controller]")]
     [EnableCors("AllowMyOrigin")]

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using CrudReportGenerate.Model.Entity;
 using CrudReportGenerate.Interface;
-using CrudReportGenerate.Models.Entity;
 
 namespace CrudReportGenerate.Repository
 {
@@ -105,7 +104,7 @@ namespace CrudReportGenerate.Repository
                         Items.Add(get);
                     }
 
-                    Models.Entity.TblCustomer Cust = new Models.Entity.TblCustomer();
+                    Model.Entity.TblCustomer Cust = new Model.Entity.TblCustomer();
                     //Add record
 
                     Cust = dBContext.TblCustomer.FirstOrDefault(asd => asd.CustomerNo == CustomerModel.CustomerNo);
@@ -148,19 +147,29 @@ namespace CrudReportGenerate.Repository
             {
                 using (var dBContext = new CustomerReportContext())
                 {
-                    Models.Entity.TblCustomer emp = new Models.Entity.TblCustomer();
-                    Customer DeleteItem = new Customer();
+                    Model.Entity.TblCustomer emp = new Model.Entity.TblCustomer(); 
+                    Model.Entity.TblInvoices inv = new Model.Entity.TblInvoices();
+
+                    //Customer DeleteItem = new Customer();
                     //Add record
                     {
                         emp = dBContext.TblCustomer.FirstOrDefault(asd => asd.CustomerNo == CustomerNo);
-                        if (emp != null)
+                        inv = dBContext.TblInvoices.FirstOrDefault(asd => asd.CustomerNo == CustomerNo);
+                        if (inv == null)
                         {
-                            //emp = new Employes();
-                            //emp.Id = EmployesModel.Id;
-                            dBContext.TblCustomer.Remove(emp);
+                            if (emp != null)
+                            {
+                                //emp = new Employes();
+                                //emp.Id = EmployesModel.Id;
+                                dBContext.TblCustomer.Remove(emp);
+                                returnVal = dBContext.SaveChanges();
+                            }
+                        }
+                        else
+                        {
+                            returnVal = -1;
                         }
                     }
-                    returnVal = dBContext.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -169,6 +178,7 @@ namespace CrudReportGenerate.Repository
             }
             return returnVal;
         }
+
 
         public Customer CustomerById(string CustomerNo)
         {

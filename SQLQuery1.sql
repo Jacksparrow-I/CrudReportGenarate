@@ -2,6 +2,9 @@
     [Customer_No] NVARCHAR(10),
     [Customer_Name] NVARCHAR(50)
 );
+
+truncate TABLE User;
+
 INSERT INTO tblCustomer VALUES
     (N'C00001',N'Kamal Enterprise'),
     (N'C00002',N'Bharit Shah & Co.'),
@@ -10,7 +13,7 @@ INSERT INTO tblCustomer VALUES
     (N'C00005',N'Jiten Gandhi & Brothers'),
     (N'C00006',N'Bhumi Associates');
 
-
+truncate table tblInvoices;
  CREATE TABLE tblInvoices (
     [Invoice_No] NVARCHAR(10),
     [Customer_No] NVARCHAR(50),
@@ -69,9 +72,24 @@ INSERT INTO tblPayment VALUES
     (N'P00020',N'I00020','2019-05-31 00:00:00',4500),
     (N'P00021',N'I00017','2019-05-31 00:00:00',360);
 
+ CREATE TABLE [User] (
+    [UserId] int NOT NULL identity(1,1) primary key,
+    [FirstName] NVARCHAR(30) NOT NULL,
+    [LastName] NVARCHAR(30) NOT NULL,
+    [UserName] NVARCHAR(50) NOT NULL,
+    [Password] NVARCHAR(20) NOT NULL,
+	[DOB] DATETIME NOT NULL,
+	[Gender] NVARCHAR(20) NOT NULL,
+	[Usertype] NVARCHAR(20) NOT NULL
+);
+
+INSERT INTO User VALUES(1,'Nisarg','Prajapati','nisu@gmail.com','nisarg123','2019-02-10 00:00:00','Male','Commercial');
+
 
 select * from tblCustomer;
 
 select * from  tblInvoices;
 
 select * from  tblPayment;
+
+select * from User;

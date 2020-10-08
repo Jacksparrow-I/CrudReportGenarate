@@ -1,5 +1,4 @@
 ﻿using System;
-using CrudReportGenerate.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -16,10 +15,11 @@ namespace CrudReportGenerate.Model.Entity
         {
         }
 
+        public virtual DbSet<Registration> Registration { get; set; }
         public virtual DbSet<TblCustomer> TblCustomer { get; set; }
         public virtual DbSet<TblInvoices> TblInvoices { get; set; }
         public virtual DbSet<TblPayment> TblPayment { get; set; }
-        public virtual DbSet<Registration> Registration { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +32,19 @@ namespace CrudReportGenerate.Model.Entity
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Registration>(entity =>
+            {
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<TblCustomer>(entity =>
             {
                 entity.HasKey(e => e.CustomerNo);
@@ -96,17 +109,39 @@ namespace CrudReportGenerate.Model.Entity
                     .HasColumnType("datetime");
             });
 
-            modelBuilder.Entity<Registration>(entity =>
+            modelBuilder.Entity<User>(entity =>
             {
+                entity.Property(e => e.Dob)
+                    .HasColumnName("DOB")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(30);
+
+                entity.Property(e => e.Gender)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(30);
+
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Region)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.UserName)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Usertype)
+                    .IsRequired()
+                    .HasMaxLength(20);
             });
 
             OnModelCreatingPartial(modelBuilder);
