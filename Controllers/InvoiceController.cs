@@ -27,7 +27,7 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpGet("GetInvoice")]
-        public List<Model.Common.Invoice> GetInvoice()
+        public List<Invoice> GetInvoice()
         {
             return _IInvoice.GetInvoice();
         }

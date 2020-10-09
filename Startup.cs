@@ -78,6 +78,7 @@ namespace CrudReportGenarate
             services.AddScoped<IPayment, PaymentRepository>();
             services.AddScoped<IReport, ReportRepository>();
             services.AddScoped<ILogin, LoginRepo>();
+            services.AddScoped<IDashboard, DashboardRepository>();
             services.AddScoped<IAuthenticateService, AuthenticateService>();
         }
 
