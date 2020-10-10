@@ -9,5 +9,6 @@ namespace CrudReportGenerate.Interface
     public interface IDashboard
     {
         public List<Dashboard> GetDashboardDetails();
+        public List<Dashboard> DisplayChart();
     }
 }
