@@ -30,11 +30,7 @@ namespace CrudReportGenerate.Controllers
             return _authenticateService.Registration(UserModel, UserName);
         }
 
-        [HttpPost("Editprofile/{UserID}")]
-        public int Editprofile([FromBody] Userdata UserModel, string UserName, int UserId)
-        {
-            return _authenticateService.Editprofile(UserModel, UserName, UserId);
-        }
+
 
         [HttpPost]//Login
         public IActionResult Post([FromBody] Userdata Model)

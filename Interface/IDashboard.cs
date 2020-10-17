@@ -10,5 +10,7 @@ namespace CrudReportGenerate.Interface
     {
         public List<Dashboard> GetDashboardDetails();
         public List<Dashboard> DisplayChart();
+        public int Editprofile(Userdata UserModel, string UserName, int UserId);
+        public Userdata GetEditprofileById(int UserId);
     }
 }

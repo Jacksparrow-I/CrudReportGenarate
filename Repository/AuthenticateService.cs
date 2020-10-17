@@ -194,6 +194,37 @@ namespace CrudReportGenerate.Repository
             return returnVal;
         }
 
+        public Userdata GetEditprofileById(int UserId)
+        {
+            Userdata Cust = new Userdata();
+            try
+            {
+                using (var dBContext = new CustomerReportContext())
+                {
+                    var dep = dBContext.User.Where(x => x.UserId == UserId).SingleOrDefault();
+
+                    if (dep != null)
+                    {
+                        Cust.UserId = dep.UserId;
+                        Cust.FirstName = dep.FirstName;
+                        Cust.LastName = dep.LastName;
+                        Cust.UserName = dep.UserName;
+                        Cust.Password = dep.Password;
+                        Cust.Dob = dep.Dob;
+                        Cust.Gender = dep.Gender;
+                        Cust.Usertype = dep.Usertype;
+                        Cust.Region = dep.Region;
+                    }
+                    return Cust;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+        }
 
         public Userdata Authenticate(Userdata Model)
         {

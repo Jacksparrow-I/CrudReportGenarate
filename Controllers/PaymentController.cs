@@ -58,5 +58,13 @@ namespace CrudReportGenerate.Controllers
         {
             return _IPayment.PaymentById(PaymentNo);
         }
+        
+
+        [HttpGet("GetInvoiceDetails/{Number}")]
+        public List<Model.Common.Invoice> GetInvoiceDetails(string Number)
+        {
+            return _IPayment.GetInvoiceDetails(Number);
+        }
+
     }
 }

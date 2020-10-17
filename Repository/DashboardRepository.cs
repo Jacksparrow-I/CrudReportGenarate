@@ -143,5 +143,106 @@ namespace CrudReportGenerate.Repository
 
             return DashboardChart;
         }
+
+        public int Editprofile(Userdata UserModel, string UserName, int UserId)
+        {
+            List<Userdata> Items = new List<Userdata>();
+
+            int returnVal = 0;
+            try
+            {
+                using (var dBContext = new CustomerReportContext())
+                {
+                    Userdata get;
+                    foreach (var it in dBContext.User)
+                    {
+                        get = new Userdata();
+                        get.UserId = it.UserId;
+                        get.FirstName = it.FirstName;
+                        get.LastName = it.LastName;
+                        get.UserName = it.UserName;
+                        get.Password = it.Password;
+                        get.Dob = it.Dob;
+                        get.Gender = it.Gender;
+                        get.Usertype = it.Usertype;
+                        get.Region = it.Region;
+                        Items.Add(get);
+                    }
+
+                    User emp = new User();
+                    //Add record
+
+                    emp = dBContext.User.FirstOrDefault(asd => asd.UserId == UserModel.UserId);
+                    if (emp != null)
+                    {
+                        //emp = new Employes();
+                        emp.UserId = UserModel.UserId;
+                        emp.FirstName = UserModel.FirstName;
+                        emp.LastName = UserModel.LastName;
+                        emp.UserName = UserModel.UserName;
+                        emp.Password = UserModel.Password;
+                        emp.Dob = UserModel.Dob;
+                        emp.Gender = UserModel.Gender;
+                        emp.Usertype = UserModel.Usertype;
+                        emp.Region = UserModel.Region;
+                        dBContext.User.Update(emp);
+                        UserId = emp.UserId;
+                        UserName = emp.UserName;
+                    }
+
+                    bool username = Items.Any(asd => asd.UserName == UserName);
+                    bool usernameexist = Items.Any(asd => (asd.UserId == UserId) && (asd.UserName == UserName));
+                    if (usernameexist == true)
+                    {
+                        returnVal = dBContext.SaveChanges();
+                    }
+                    else if (username == true)
+                    {
+                        returnVal = -1;
+                    }
+                    else
+                    {
+                        returnVal = dBContext.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return returnVal;
+        }
+
+        public Userdata GetEditprofileById(int UserId)
+        {
+            Userdata Cust = new Userdata();
+            try
+            {
+                using (var dBContext = new CustomerReportContext())
+                {
+                    var dep = dBContext.User.Where(x => x.UserId == UserId).SingleOrDefault();
+
+                    if (dep != null)
+                    {
+                        Cust.UserId = dep.UserId;
+                        Cust.FirstName = dep.FirstName;
+                        Cust.LastName = dep.LastName;
+                        Cust.UserName = dep.UserName;
+                        Cust.Password = dep.Password;
+                        Cust.Dob = dep.Dob;
+                        Cust.Gender = dep.Gender;
+                        Cust.Usertype = dep.Usertype;
+                        Cust.Region = dep.Region;
+                    }
+                    return Cust;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+        }
     }
 }

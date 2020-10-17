@@ -85,10 +85,8 @@ namespace CrudReportGenerate.Repository
                         Boolean b = false;
                         foreach (var a in Items)
                         {
-                            //if (a.Year == Report1.Year && a.Month == Report1.Month && a.CustomerNo == Report1.CustomerNo)
                             if (a.DateOfMonthInvoice == rep.DateOfMonthInvoice && a.CustomerNo == rep.CustomerNo)
                             {
-                                //   a.PaymentCollection = a.PaymentCollection + dBContext.Pyment.FirstOrDefault(x => x.InvoiceNo == Inv.InvoiceNo).PaymentAmount;
                                 a.Sales = it.InvoiceAmount + a.Sales;
                                 a.NoofInvoice = a.NoofInvoice + 1;
                                 b = true;
@@ -96,7 +94,6 @@ namespace CrudReportGenerate.Repository
                         }
                         if (b == false)
                         {
-                            // Report1.PaymentCollection = dBContext.Pyment.FirstOrDefault(x => x.InvoiceNo == Inv.InvoiceNo).PaymentAmount;
                             rep.Sales = it.InvoiceAmount;
                             i++;
                             rep.Num = i;

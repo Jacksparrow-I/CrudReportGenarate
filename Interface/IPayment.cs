@@ -13,6 +13,7 @@ namespace CrudReportGenerate.Interface
         public int UpdatePayment(Payment PaymentModel, string PaymentNo, string PaymentName);
         public int DeletePayment(string PaymentNo);
         public Payment PaymentById(string PaymentNo);
+        public List<Model.Common.Invoice> GetInvoiceDetails(string Number);
 
     }
 }

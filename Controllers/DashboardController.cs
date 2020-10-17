@@ -36,5 +36,17 @@ namespace CrudReportGenerate.Controllers
         {
             return _IDashboard.DisplayChart();
         }
+
+        [HttpPost("Editprofile/{UserID}")]
+        public int Editprofile([FromBody] Userdata UserModel, string UserName, int UserId)
+        {
+            return _IDashboard.Editprofile(UserModel, UserName, UserId);
+        }
+
+        [HttpGet("GetEditprofileById/{UserId}")]
+        public Userdata GetEditprofileById(int UserId)
+        {
+            return _IDashboard.GetEditprofileById(UserId);
+        }
     }
 }

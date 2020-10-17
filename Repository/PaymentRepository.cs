@@ -40,6 +40,7 @@ namespace CrudReportGenerate.Repository
         public int AddPaymentData(Model.Common.Payment PaymentModel, string PaymentNo)
         {
             List<Payment> Items = new List<Payment>();
+            List<Invoice> InvItems = new List<Invoice>();
 
             int returnVal = 0;
             try
@@ -76,6 +77,26 @@ namespace CrudReportGenerate.Repository
                     {
                         returnVal = dBContext.SaveChanges();
                     }
+
+                    //using (var ddBContext = new CustomerReportContext())
+                    //{
+                    //    Model.Common.Invoice Inv = new Model.Common.Invoice();
+                    //    foreach (var iit in ddBContext.TblInvoices)
+                    //    {
+                          
+                    //        Inv.InvoiceNo = iit.InvoiceNo;
+                    //        Inv.InvoiceAmount = iit.InvoiceAmount;
+                    //        Inv.InvoiceDate = iit.InvoiceDate;
+                    //        Inv.PaymentDueDate = iit.PaymentDueDate;
+                    //        InvItems.Add(Inv);
+                    //    }
+
+                    //    bool InvoicAmount = Items.Any(asd => asd.PaymentAmount > Inv.InvoiceAmount);
+                    //    if (InvoicAmount == true)
+                    //    {
+                    //        returnVal = -2;
+                    //    }
+                    //}
 
                     //returnVal = dBContext.SaveChanges();  
 
@@ -213,5 +234,51 @@ namespace CrudReportGenerate.Repository
             }
 
         }
+
+        public List<Model.Common.Invoice> GetInvoiceDetails(string Number)
+        {
+            List<Model.Common.Invoice> Items = new List<Model.Common.Invoice>();
+            try
+            {
+                using (var dBContext = new CustomerReportContext())
+                {
+                    Model.Common.Invoice inv;
+                    foreach (var it in dBContext.TblInvoices)
+                    {
+                        if (it.InvoiceNo == Number)
+                        {
+                            inv = new Model.Common.Invoice();
+                            inv.InvoiceNo = it.InvoiceNo;
+                            inv.CustomerNo = it.CustomerNo;
+                            inv.InvoiceDate = it.InvoiceDate;
+                            inv.InvoiceAmount = it.InvoiceAmount;
+                            inv.PaymentDueDate = it.PaymentDueDate;
+                            Items.Add(inv);
+                        }
+                        
+                    }
+
+                    foreach (var pay in dBContext.TblPayment.ToList())
+                    {
+                        foreach (var input in Items)
+                        {
+                            if (pay.InvoiceNo == Number)
+                            {
+                                input.PaymentAmount = input.PaymentAmount + pay.PaymentAmount;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return Items;
+        }
+
+
     }
 }
