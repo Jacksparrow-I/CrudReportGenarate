@@ -48,7 +48,6 @@ namespace CrudReportGenerate.Controllers
         [HttpDelete("DeleteInvoice/{InvoiceNo}")]
         public int DeleteInvoice(string InvoiceNo)
         {
-            //**** move this below code to dependency injection ****
             return _IInvoice.DeleteInvoice(InvoiceNo);
         }
 

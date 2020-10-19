@@ -30,8 +30,6 @@ namespace CrudReportGenerate.Controllers
             return _authenticateService.Registration(UserModel, UserName);
         }
 
-
-
         [HttpPost]//Login
         public IActionResult Post([FromBody] Userdata Model)
         {

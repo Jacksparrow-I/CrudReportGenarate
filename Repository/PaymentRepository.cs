@@ -77,30 +77,6 @@ namespace CrudReportGenerate.Repository
                     {
                         returnVal = dBContext.SaveChanges();
                     }
-
-                    //using (var ddBContext = new CustomerReportContext())
-                    //{
-                    //    Model.Common.Invoice Inv = new Model.Common.Invoice();
-                    //    foreach (var iit in ddBContext.TblInvoices)
-                    //    {
-                          
-                    //        Inv.InvoiceNo = iit.InvoiceNo;
-                    //        Inv.InvoiceAmount = iit.InvoiceAmount;
-                    //        Inv.InvoiceDate = iit.InvoiceDate;
-                    //        Inv.PaymentDueDate = iit.PaymentDueDate;
-                    //        InvItems.Add(Inv);
-                    //    }
-
-                    //    bool InvoicAmount = Items.Any(asd => asd.PaymentAmount > Inv.InvoiceAmount);
-                    //    if (InvoicAmount == true)
-                    //    {
-                    //        returnVal = -2;
-                    //    }
-                    //}
-
-                    //returnVal = dBContext.SaveChanges();  
-
-
                 }
             }
             catch (Exception ex)
@@ -134,7 +110,6 @@ namespace CrudReportGenerate.Repository
                     //Add record
 
                     Cust = dBContext.TblPayment.FirstOrDefault(asd => asd.PaymentNo == PaymentModel.PaymentNo);
-                    //emp = new Employes();
                     Cust.PaymentNo = PaymentModel.PaymentNo;
                     Cust.InvoiceNo = PaymentModel.InvoiceNo;
                     Cust.PaymentDate = PaymentModel.PaymentDate;
@@ -151,23 +126,6 @@ namespace CrudReportGenerate.Repository
                     {
                         returnVal = dBContext.SaveChanges();
                     }
-                    //CustomerNo = Cust.CustomerNo;
-                    //CustomerName = Cust.CustomerName;
-
-                    //bool departmentsame = Items.Any(asd => asd.CustomerName == CustomerName);
-                    //bool departmentexist = Items.Any(asd => (asd.CustomerNo == CustomerNo) && (asd.CustomerName == CustomerName));
-                    //if (departmentexist == true)
-                    //{
-                    //    returnVal = dBContext.SaveChanges();
-                    //}
-                    //else if (departmentsame == true)
-                    //{
-                    //    returnVal = -1;
-                    //}
-                    //else
-                    //{
-                    //    returnVal = dBContext.SaveChanges();
-                    //}
 
                     returnVal = dBContext.SaveChanges();
                 }
@@ -193,8 +151,6 @@ namespace CrudReportGenerate.Repository
                         emp = dBContext.TblPayment.FirstOrDefault(asd => asd.PaymentNo == PaymentNo);
                         if (emp != null)
                         {
-                            //emp = new Employes();
-                            //emp.Id = EmployesModel.Id;
                             dBContext.TblPayment.Remove(emp);
                         }
                     }
@@ -255,7 +211,6 @@ namespace CrudReportGenerate.Repository
                             inv.PaymentDueDate = it.PaymentDueDate;
                             Items.Add(inv);
                         }
-                        
                     }
 
                     foreach (var pay in dBContext.TblPayment.ToList())
@@ -278,7 +233,5 @@ namespace CrudReportGenerate.Repository
 
             return Items;
         }
-
-
     }
 }

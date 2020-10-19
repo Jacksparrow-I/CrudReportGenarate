@@ -17,55 +17,6 @@ namespace CrudReportGenerate.Repository
             {
                 using (var dBContext = new CustomerReportContext())
                 {
-                    //Model.Common.Reports rep;
-                    //foreach (var it in dBContext.TblCustomer.ToList())
-                    //{
-                    //    rep = new Model.Common.Reports();
-                    //    rep.CustomerName = it.CustomerName;
-
-                    //    if (rep.CustomerName != null)
-                    //    {
-                    //        var des = dBContext.TblCustomer.FirstOrDefault(x => x.CustomerName == rep.CustomerName);
-                    //        if (des != null)
-                    //        {
-                    //            rep.CustomerName = des.CustomerName;
-                    //            Items.Add(rep);
-                    //        }
-                    //    }
-                    //}
-
-                    //foreach (var it in dBContext.TblInvoices.ToList())
-                    //{
-                    //    rep = new Model.Common.Reports();
-                    //    rep.InvoiceDate = it.InvoiceDate;
-
-                    //    if (rep.InvoiceDate != null)
-                    //    {
-                    //        var des = dBContext.TblInvoices.FirstOrDefault(x => x.InvoiceDate == rep.InvoiceDate);
-                    //        if (des != null)
-                    //        {
-                    //            rep.InvoiceDate = des.InvoiceDate;
-                    //            Items.Add(rep);
-                    //        }
-                    //    }
-                    //}
-
-                    //foreach (var it in dBContext.TblInvoices.ToList())
-                    //{
-                    //    rep = new Model.Common.Reports();
-                    //    rep.InvoiceDate = it.InvoiceDate;
-
-                    //    if (rep.InvoiceDate != null)
-                    //    {
-                    //        var des = dBContext.TblInvoices.FirstOrDefault(x => x.InvoiceDate == rep.InvoiceDate);
-                    //        if (des != null)
-                    //        {
-                    //            rep.InvoiceDate = des.InvoiceDate;
-                    //            Items.Add(rep);
-                    //        }
-                    //    }
-                    //}
-
                     Model.Common.Reports rep;
                     int i = 0;
                     foreach (var it in dBContext.TblInvoices.ToList())
@@ -142,8 +93,6 @@ namespace CrudReportGenerate.Repository
                             }
                             Items.Add(rep);
                         }
-
-
                     }
                 }
             }

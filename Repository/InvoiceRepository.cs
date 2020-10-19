@@ -68,7 +68,6 @@ namespace CrudReportGenerate.Repository
                     Cust.InvoiceDate = InvoiceModel.InvoiceDate;
                     Cust.InvoiceAmount = InvoiceModel.InvoiceAmount;
                     Cust.PaymentDueDate = Cust.InvoiceDate.AddDays(30);
-                    //dBContext.TblInvoices.Add(Cust);
                     InvoiceNo = Cust.InvoiceNo;
 
                     bool Inv = Items.Any(asd => asd.InvoiceNo == InvoiceNo);
@@ -82,10 +81,6 @@ namespace CrudReportGenerate.Repository
                         dBContext.TblInvoices.Add(Cust);
                         returnVal = dBContext.SaveChanges();
                     }
-
-                    //returnVal = dBContext.SaveChanges();  
-
-
                 }
             }
             catch (Exception ex)
@@ -120,7 +115,6 @@ namespace CrudReportGenerate.Repository
                     //Add record
 
                     Cust = dBContext.TblInvoices.FirstOrDefault(asd => asd.InvoiceNo == InvoiceModel.InvoiceNo);
-                    //emp = new Employes();
                     Cust.InvoiceNo = InvoiceModel.InvoiceNo;
                     Cust.CustomerNo = InvoiceModel.CustomerNo;
                     Cust.InvoiceDate = InvoiceModel.InvoiceDate;
@@ -140,23 +134,6 @@ namespace CrudReportGenerate.Repository
                         dBContext.TblInvoices.Add(Cust);
                         returnVal = dBContext.SaveChanges();
                     }
-                    //CustomerNo = Cust.CustomerNo;
-                    //CustomerName = Cust.CustomerName;
-
-                    //bool departmentsame = Items.Any(asd => asd.CustomerName == CustomerName);
-                    //bool departmentexist = Items.Any(asd => (asd.CustomerNo == CustomerNo) && (asd.CustomerName == CustomerName));
-                    //if (departmentexist == true)
-                    //{
-                    //    returnVal = dBContext.SaveChanges();
-                    //}
-                    //else if (departmentsame == true)
-                    //{
-                    //    returnVal = -1;
-                    //}
-                    //else
-                    //{
-                    //    returnVal = dBContext.SaveChanges();
-                    //}
 
                     returnVal = dBContext.SaveChanges();
                 }
@@ -177,7 +154,6 @@ namespace CrudReportGenerate.Repository
                 {
                     Model.Entity.TblPayment inv = new Model.Entity.TblPayment();
                     Model.Entity.TblInvoices emp = new Model.Entity.TblInvoices();
-                    //Customer DeleteItem = new Customer();
                     //Add record
                     {
                         

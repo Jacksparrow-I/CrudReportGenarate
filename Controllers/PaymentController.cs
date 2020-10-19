@@ -49,7 +49,6 @@ namespace CrudReportGenerate.Controllers
         [HttpDelete("DeletePayment/{PaymentNo}")]
         public int DeletePayment(string PaymentNo)
         {
-            //**** move this below code to dependency injection ****
             return _IPayment.DeletePayment(PaymentNo);
         }
 
@@ -58,7 +57,6 @@ namespace CrudReportGenerate.Controllers
         {
             return _IPayment.PaymentById(PaymentNo);
         }
-        
 
         [HttpGet("GetInvoiceDetails/{Number}")]
         public List<Model.Common.Invoice> GetInvoiceDetails(string Number)

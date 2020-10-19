@@ -11,8 +11,6 @@ namespace CrudReportGenerate.Model.Common
         public DateTime DateOfMonthInvoice { get; set; }
         public DateTime DateOfMonthPay { get; set; }
         public DateTime DateOfMonth { get; set; }
-        //public DateTime MonthInvoice { get; set; }
-        //public DateTime MonthPayment { get; set; }
         public string CustomerNo { get; set; }
         public string CustomerName { get; set; }
         public Decimal NoofInvoice { get; set; }

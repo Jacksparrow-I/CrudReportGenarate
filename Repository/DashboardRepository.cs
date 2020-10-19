@@ -53,29 +53,7 @@ namespace CrudReportGenerate.Repository
 
                 using (var dbcontext = new CustomerReportContext())
                 {
-                    //Dashboard data = new Dashboard();
-
-                    //DateTime Today = DateTime.Today;
-                    //var Month = (Today.Month);
-                    //var Year = (Today.Year);
-
-                    //data.ChartMonthly = dbcontext.TblCustomer.Count();
-
-                    //data.TotalInvoice = dbcontext.TblInvoices.Count();
-
-                    //foreach (var sa in dbcontext.TblInvoices.ToList())
-                    //{
-                    //    data.ChartSales += sa.InvoiceAmount;
-                    //}
-
-                    //foreach (var pc in dbcontext.TblPayment.ToList())
-                    //{
-                    //    data.ChartPayment += pc.PaymentAmount;
-                    //}
-                    //DashboardChart.Add(data);
-
                     Dashboard chdb;
-
 
                     foreach (var chartdb in dbcontext.TblInvoices.ToList())
                     {
@@ -175,7 +153,6 @@ namespace CrudReportGenerate.Repository
                     emp = dBContext.User.FirstOrDefault(asd => asd.UserId == UserModel.UserId);
                     if (emp != null)
                     {
-                        //emp = new Employes();
                         emp.UserId = UserModel.UserId;
                         emp.FirstName = UserModel.FirstName;
                         emp.LastName = UserModel.LastName;

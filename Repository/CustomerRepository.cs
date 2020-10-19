@@ -108,27 +108,9 @@ namespace CrudReportGenerate.Repository
                     //Add record
 
                     Cust = dBContext.TblCustomer.FirstOrDefault(asd => asd.CustomerNo == CustomerModel.CustomerNo);
-                    //emp = new Employes();
                     Cust.CustomerNo = CustomerModel.CustomerNo;
                     Cust.CustomerName = CustomerModel.CustomerName;
                     dBContext.TblCustomer.Update(Cust);
-                    //CustomerNo = Cust.CustomerNo;
-                    //CustomerName = Cust.CustomerName;
-
-                    //bool departmentsame = Items.Any(asd => asd.CustomerName == CustomerName);
-                    //bool departmentexist = Items.Any(asd => (asd.CustomerNo == CustomerNo) && (asd.CustomerName == CustomerName));
-                    //if (departmentexist == true)
-                    //{
-                    //    returnVal = dBContext.SaveChanges();
-                    //}
-                    //else if (departmentsame == true)
-                    //{
-                    //    returnVal = -1;
-                    //}
-                    //else
-                    //{
-                    //    returnVal = dBContext.SaveChanges();
-                    //}
 
                     returnVal = dBContext.SaveChanges();
                 }
@@ -150,7 +132,7 @@ namespace CrudReportGenerate.Repository
                     Model.Entity.TblCustomer emp = new Model.Entity.TblCustomer(); 
                     Model.Entity.TblInvoices inv = new Model.Entity.TblInvoices();
 
-                    //Customer DeleteItem = new Customer();
+
                     //Add record
                     {
                         emp = dBContext.TblCustomer.FirstOrDefault(asd => asd.CustomerNo == CustomerNo);
@@ -159,8 +141,6 @@ namespace CrudReportGenerate.Repository
                         {
                             if (emp != null)
                             {
-                                //emp = new Employes();
-                                //emp.Id = EmployesModel.Id;
                                 dBContext.TblCustomer.Remove(emp);
                                 returnVal = dBContext.SaveChanges();
                             }

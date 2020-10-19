@@ -21,11 +21,6 @@ namespace CrudReportGenerate.Repository
             _appSettings = appSettings.Value;
         }
 
-        //private List<User> users = new List<User>()
-        //{
-        //    new User{UserId = 1,FirstName="Nisarg",LastName ="prajapati",
-        //        UserName="Nisu@gmail.com",Password="1234"}
-        //};
 
         public List<User> GetLogindetails()
         {
@@ -240,6 +235,7 @@ namespace CrudReportGenerate.Repository
                     cust.UserName = it.UserName;
                     cust.Password = it.Password;
                     cust.FirstName = it.FirstName;
+                    cust.UserId = it.UserId;
                     users.Add(cust);
                 }
             }
