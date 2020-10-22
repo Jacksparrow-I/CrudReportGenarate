@@ -9,7 +9,7 @@ namespace CrudReportGenerate.Interface
     public interface IDashboard
     {
         public List<Dashboard> GetDashboardDetails();
-        public List<Dashboard> DisplayChart();
+        public List<Chart> DisplayChart();
         public int Editprofile(Userdata UserModel, string UserName, int UserId);
         public Userdata GetEditprofileById(int UserId);
     }

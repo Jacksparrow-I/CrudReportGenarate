@@ -31,9 +31,6 @@ namespace CrudReportGenerate.Repository
                     {
                         data.TotalPayCollection += pc.PaymentAmount;
                     }
-                    //var dep = dbcontext.TblInvoices.Where(x => x.InvoiceAmount).Sum();
-                    //data.TotalInvoice = dep.InvoiceAmount;
-                    //data.TotalInvoice = dbcontext.TblInvoices.Count();
                     DashboardDetails.Add(data); 
                 }
             }
@@ -45,19 +42,19 @@ namespace CrudReportGenerate.Repository
         }
 
 
-        public List<Dashboard> DisplayChart()
+        public List<Chart> DisplayChart()
         {
-            List<Dashboard> DashboardChart = new List<Dashboard>();
+            List<Chart> DashboardChart = new List<Chart>();
             try
             {
 
                 using (var dbcontext = new CustomerReportContext())
                 {
-                    Dashboard chdb;
+                    Chart chdb;
 
                     foreach (var chartdb in dbcontext.TblInvoices.ToList())
                     {
-                        chdb = new Dashboard();
+                        chdb = new Chart();
 
                         Boolean Flag = false;
 
@@ -79,36 +76,33 @@ namespace CrudReportGenerate.Repository
                             chdb.ChartSales = chartdb.InvoiceAmount;
                             DashboardChart.Add(chdb);
                         }
-
                     }
 
-                    foreach (var chartdb in dbcontext.TblPayment.ToList())
-                    {
-                        chdb = new Dashboard();
+                    //foreach (var chartdb in dbcontext.TblPayment.ToList())
+                    //{
+                    //    chdb = new Dashboard();
 
-                        Boolean Flag = false;
+                    //    Boolean Flag = false;
 
-                        foreach (var chdashboard in DashboardChart.ToList())
-                        {
-                            var it1 = chdashboard.MonthAndYearDate.Date;
-                            var it2 = chartdb.PaymentDate.Date;
+                    //    foreach (var chdashboard in DashboardChart.ToList())
+                    //    {
+                    //        var it1 = chdashboard.MonthAndYearDate.Date;
+                    //        var it2 = chartdb.PaymentDate.Date;
 
-                            if (it1 == it2)
-                            {
-                                chdashboard.ChartPayment += chartdb.PaymentAmount;
-                                Flag = true;
-                            }
-                        }
+                    //        if (it1 == it2)
+                    //        {
+                    //            chdashboard.ChartPayment += chartdb.PaymentAmount;
+                    //            Flag = true;
+                    //        }
+                    //    }
 
-                        if (Flag == false)
-                        {
-                            chdb.MonthAndYearDate = chartdb.PaymentDate;
-                            chdb.ChartPayment = chartdb.PaymentAmount;
-                            DashboardChart.Add(chdb);
-                        }
-
-                    }
-
+                    //    if (Flag == false)
+                    //    {
+                    //        chdb.MonthAndYearDate = chartdb.PaymentDate;
+                    //        chdb.ChartPayment = chartdb.PaymentAmount;
+                    //        DashboardChart.Add(chdb);
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)

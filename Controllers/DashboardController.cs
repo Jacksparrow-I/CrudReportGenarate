@@ -32,7 +32,7 @@ namespace CrudReportGenerate.Controllers
         
 
         [HttpGet("DisplayChart")]
-        public List<Dashboard> DisplayChart()
+        public List<Chart> DisplayChart()
         {
             return _IDashboard.DisplayChart();
         }
