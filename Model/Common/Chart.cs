@@ -11,7 +11,7 @@ namespace CrudReportGenerate.Model.Common
 
         //[DisplayFormat(DataFormatString = "{​​​​0:MM/yyyy}​​​​", ApplyFormatInEditMode = true)]
         public DateTime MonthAndYearDate { get; set; }
-        //public int ChartPayment { get; set; }
+        public int ChartPayment { get; set; }
         public int ChartSales { get; set; }
 
     }

@@ -59,6 +59,8 @@ namespace CrudReportGenerate.Repository
         {
             List<Userdata> Items = new List<Userdata>();
 
+            UserModel.Password = BCrypt.Net.BCrypt.HashPassword(UserModel.Password);
+
             int returnVal = 0;
             try
             {
@@ -108,7 +110,6 @@ namespace CrudReportGenerate.Repository
 
                     else
                     {
-                        //dBContext.TblCustomer.Add(Cust);
                         returnVal = dBContext.SaveChanges();
                     }
                 }
@@ -225,7 +226,7 @@ namespace CrudReportGenerate.Repository
         {
 
             List<Userdata> users = new List<Userdata>();
-
+            bool IsvalidPasswordOrNot = false;
             using (var dbContext = new CustomerReportContext())
             {
                 Userdata cust;
@@ -240,9 +241,15 @@ namespace CrudReportGenerate.Repository
                 }
             }
 
-            var user = users.SingleOrDefault(x => x.UserName == Model.UserName && x.Password == Model.Password);
+            var user = users.SingleOrDefault(x => x.UserName == Model.UserName);
+            
+            if (user != null)
+            {
+                IsvalidPasswordOrNot = BCrypt.Net.BCrypt.Verify(Model.Password, user.Password);
 
-            if (user == null)
+            }
+
+            if ( IsvalidPasswordOrNot == false || user == null)
             {
                 return null;
             }
@@ -253,7 +260,7 @@ namespace CrudReportGenerate.Repository
             {
                 Subject = new System.Security.Claims.ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.UserId.ToString()),
+                    new Claim(ClaimTypes.Name, user.UserName.ToString()),
                     new Claim(ClaimTypes.Role, "Admin"),
                     new Claim(ClaimTypes.Version, "V3.1")
                 }),

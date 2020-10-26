@@ -78,31 +78,31 @@ namespace CrudReportGenerate.Repository
                         }
                     }
 
-                    //foreach (var chartdb in dbcontext.TblPayment.ToList())
-                    //{
-                    //    chdb = new Dashboard();
+                    foreach (var chartdb in dbcontext.TblPayment.ToList())
+                    {
+                        chdb = new Chart();
 
-                    //    Boolean Flag = false;
+                        Boolean Flag = false;
 
-                    //    foreach (var chdashboard in DashboardChart.ToList())
-                    //    {
-                    //        var it1 = chdashboard.MonthAndYearDate.Date;
-                    //        var it2 = chartdb.PaymentDate.Date;
+                        foreach (var chdashboard in DashboardChart.ToList())
+                        {
+                            var it1 = chdashboard.MonthAndYearDate.Date;
+                            var it2 = chartdb.PaymentDate.Date;
 
-                    //        if (it1 == it2)
-                    //        {
-                    //            chdashboard.ChartPayment += chartdb.PaymentAmount;
-                    //            Flag = true;
-                    //        }
-                    //    }
+                            if (it1 == it2)
+                            {
+                                chdashboard.ChartPayment += chartdb.PaymentAmount;
+                                Flag = true;
+                            }
+                        }
 
-                    //    if (Flag == false)
-                    //    {
-                    //        chdb.MonthAndYearDate = chartdb.PaymentDate;
-                    //        chdb.ChartPayment = chartdb.PaymentAmount;
-                    //        DashboardChart.Add(chdb);
-                    //    }
-                    //}
+                        if (Flag == false)
+                        {
+                            chdb.MonthAndYearDate = chartdb.PaymentDate;
+                            chdb.ChartPayment = chartdb.PaymentAmount;
+                            DashboardChart.Add(chdb);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
