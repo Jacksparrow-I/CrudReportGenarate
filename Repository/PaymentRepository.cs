@@ -55,6 +55,8 @@ namespace CrudReportGenerate.Repository
                         get.InvoiceNo = it.InvoiceNo;
                         get.PaymentDate = it.PaymentDate;
                         get.PaymentAmount = it.PaymentAmount;
+                        get.CreatedBy = it.CreatedBy;
+                        get.CreatedDate = it.CreatedDate;
                         Items.Add(get);
                     }
 
@@ -65,6 +67,8 @@ namespace CrudReportGenerate.Repository
                     Cust.InvoiceNo = PaymentModel.InvoiceNo;
                     Cust.PaymentDate = PaymentModel.PaymentDate;
                     Cust.PaymentAmount = PaymentModel.PaymentAmount;
+                    Cust.CreatedBy = PaymentModel.CreatedBy;
+                    Cust.CreatedDate = DateTime.Now;
                     dBContext.TblPayment.Add(Cust);
                     PaymentNo = Cust.PaymentNo;
 
@@ -103,6 +107,8 @@ namespace CrudReportGenerate.Repository
                         get.InvoiceNo = it.InvoiceNo;
                         get.PaymentDate = it.PaymentDate;
                         get.PaymentAmount = it.PaymentAmount;
+                        get.ModifyBy = it.ModifyBy;
+                        get.ModifyDate = DateTime.Now;
                         Items.Add(get);
                     }
 
@@ -114,6 +120,8 @@ namespace CrudReportGenerate.Repository
                     Cust.InvoiceNo = PaymentModel.InvoiceNo;
                     Cust.PaymentDate = PaymentModel.PaymentDate;
                     Cust.PaymentAmount = PaymentModel.PaymentAmount;
+                    Cust.ModifyBy = PaymentModel.ModifyBy;
+                    Cust.ModifyDate = DateTime.Now;
                     dBContext.TblPayment.Update(Cust);
                     PaymentNo = Cust.PaymentNo;
 

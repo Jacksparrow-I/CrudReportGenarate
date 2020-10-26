@@ -19,5 +19,7 @@ namespace CrudReportGenerate.Model.Common
         public string Usertype { get; set; }
         public string Region { get; set; }
         public string Token { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
     }
 }

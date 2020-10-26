@@ -55,10 +55,18 @@ namespace CrudReportGenerate.Model.Entity
                     .HasColumnName("Customer_No")
                     .HasMaxLength(10);
 
+                entity.Property(e => e.CreatedBy).HasMaxLength(50);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
                 entity.Property(e => e.CustomerName)
                     .IsRequired()
                     .HasColumnName("Customer_Name")
                     .HasMaxLength(50);
+
+                entity.Property(e => e.ModifyBy).HasMaxLength(50);
+
+                entity.Property(e => e.ModifyDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<TblInvoices>(entity =>
@@ -71,6 +79,10 @@ namespace CrudReportGenerate.Model.Entity
                     .HasColumnName("Invoice_No")
                     .HasMaxLength(10);
 
+                entity.Property(e => e.CreatedBy).HasMaxLength(50);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
                 entity.Property(e => e.CustomerNo)
                     .IsRequired()
                     .HasColumnName("Customer_No")
@@ -81,6 +93,10 @@ namespace CrudReportGenerate.Model.Entity
                 entity.Property(e => e.InvoiceDate)
                     .HasColumnName("Invoice_Date")
                     .HasColumnType("datetime");
+
+                entity.Property(e => e.ModifyBy).HasMaxLength(50);
+
+                entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
                 entity.Property(e => e.PaymentDueDate)
                     .HasColumnName("Payment_Due_Date")
@@ -97,10 +113,18 @@ namespace CrudReportGenerate.Model.Entity
                     .HasColumnName("Payment_No")
                     .HasMaxLength(10);
 
+                entity.Property(e => e.CreatedBy).HasMaxLength(50);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
                 entity.Property(e => e.InvoiceNo)
                     .IsRequired()
                     .HasColumnName("Invoice_No")
                     .HasMaxLength(10);
+
+                entity.Property(e => e.ModifyBy).HasMaxLength(50);
+
+                entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
                 entity.Property(e => e.PaymentAmount).HasColumnName("Payment_Amount");
 
@@ -111,6 +135,8 @@ namespace CrudReportGenerate.Model.Entity
 
             modelBuilder.Entity<User>(entity =>
             {
+                entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+
                 entity.Property(e => e.Dob)
                     .HasColumnName("DOB")
                     .HasColumnType("datetime");
@@ -126,6 +152,8 @@ namespace CrudReportGenerate.Model.Entity
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(30);
+
+                entity.Property(e => e.ModifyDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Password)
                     .IsRequired()

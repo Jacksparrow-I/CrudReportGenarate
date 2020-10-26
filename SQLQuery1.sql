@@ -3,7 +3,7 @@
     [Customer_Name] NVARCHAR(50)
 );
 
-truncate TABLE User;
+Truncate TABLE [User];
 
 INSERT INTO tblCustomer VALUES
     (N'C00001',N'Kamal Enterprise'),
@@ -83,7 +83,7 @@ INSERT INTO tblPayment VALUES
 	[Usertype] NVARCHAR(20) NOT NULL
 );
 
-INSERT INTO User VALUES(1,'Nisarg','Prajapati','nisu@gmail.com','nisarg123','2019-02-10 00:00:00','Male','Commercial');
+INSERT INTO [User] VALUES(1,'Nisarg','Prajapati','nisu@gmail.com','nisarg123','2019-02-10 00:00:00','Male','Commercial');
 
 
 select * from tblCustomer;
@@ -92,4 +92,4 @@ select * from  tblInvoices;
 
 select * from  tblPayment;
 
-select * from User;
+select * from [User];

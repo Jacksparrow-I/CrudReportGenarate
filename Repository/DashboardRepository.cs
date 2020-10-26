@@ -138,6 +138,7 @@ namespace CrudReportGenerate.Repository
                         get.Gender = it.Gender;
                         get.Usertype = it.Usertype;
                         get.Region = it.Region;
+                        get.ModifyDate = DateTime.Now;
                         Items.Add(get);
                     }
 
@@ -156,6 +157,7 @@ namespace CrudReportGenerate.Repository
                         emp.Gender = UserModel.Gender;
                         emp.Usertype = UserModel.Usertype;
                         emp.Region = UserModel.Region;
+                        emp.ModifyDate = DateTime.Now;
                         dBContext.User.Update(emp);
                         UserId = emp.UserId;
                         UserName = emp.UserName;

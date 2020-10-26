@@ -51,6 +51,8 @@ namespace CrudReportGenerate.Repository
                         get = new Model.Common.Customer();
                         get.CustomerNo = it.CustomerNo;
                         get.CustomerName = it.CustomerName;
+                        get.CreatedBy = it.CreatedBy;
+                        get.CreatedDate = it.CreatedDate;
                         Items.Add(get);
                     }
 
@@ -59,7 +61,8 @@ namespace CrudReportGenerate.Repository
                     Cust = new TblCustomer();
                     Cust.CustomerNo = CustomerModel.CustomerNo;
                     Cust.CustomerName = CustomerModel.CustomerName;
-                    
+                    Cust.CreatedBy = CustomerModel.CreatedBy;
+                    Cust.CreatedDate = DateTime.Now;
                     CustomerNo = Cust.CustomerNo;
 
                     bool CustNo = Items.Any(asd => asd.CustomerNo == CustomerNo);
@@ -101,6 +104,8 @@ namespace CrudReportGenerate.Repository
                         get = new Customer();
                         get.CustomerNo = it.CustomerNo;
                         get.CustomerName = it.CustomerName;
+                        get.ModifyBy = it.ModifyBy;
+                        get.ModifyDate = DateTime.Now;
                         Items.Add(get);
                     }
 
@@ -110,6 +115,8 @@ namespace CrudReportGenerate.Repository
                     Cust = dBContext.TblCustomer.FirstOrDefault(asd => asd.CustomerNo == CustomerModel.CustomerNo);
                     Cust.CustomerNo = CustomerModel.CustomerNo;
                     Cust.CustomerName = CustomerModel.CustomerName;
+                    Cust.ModifyBy = CustomerModel.ModifyBy;
+                    Cust.ModifyDate = DateTime.Now;
                     dBContext.TblCustomer.Update(Cust);
 
                     returnVal = dBContext.SaveChanges();

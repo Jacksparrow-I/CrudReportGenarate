@@ -79,6 +79,7 @@ namespace CrudReportGenerate.Repository
                         get.Gender = it.Gender;
                         get.Usertype = it.Usertype;
                         get.Region = it.Region;
+                        get.CreatedDate = DateTime.Now;
                         
                         Items.Add(get);
                     }
@@ -96,6 +97,7 @@ namespace CrudReportGenerate.Repository
                         Cust.Gender = UserModel.Gender;
                         Cust.Usertype = UserModel.Usertype;
                         Cust.Region = UserModel.Region;
+                        Cust.CreatedDate = DateTime.Now;
                         dBContext.User.Add(Cust);
 
                         UserName = Cust.UserName;
@@ -121,7 +123,7 @@ namespace CrudReportGenerate.Repository
             return returnVal;
         }
 
-        public int Editprofile(Userdata UserModel, string UserName,int UserId)
+        public int Editprofile(Userdata UserModel, string UserName, int UserId)
         {
             List<Userdata> Items = new List<Userdata>();
 
@@ -143,6 +145,7 @@ namespace CrudReportGenerate.Repository
                         get.Gender = it.Gender;
                         get.Usertype = it.Usertype;
                         get.Region = it.Region;
+                        get.ModifyDate = DateTime.Now;
                         Items.Add(get);
                     }
 
@@ -152,7 +155,6 @@ namespace CrudReportGenerate.Repository
                     emp = dBContext.User.FirstOrDefault(asd => asd.UserId == UserModel.UserId);
                     if (emp != null)
                     {
-                        //emp = new Employes();
                         emp.UserId = UserModel.UserId;
                         emp.FirstName = UserModel.FirstName;
                         emp.LastName = UserModel.LastName;
@@ -162,6 +164,7 @@ namespace CrudReportGenerate.Repository
                         emp.Gender = UserModel.Gender;
                         emp.Usertype = UserModel.Usertype;
                         emp.Region = UserModel.Region;
+                        emp.ModifyDate = DateTime.Now;
                         dBContext.User.Update(emp);
                         UserId = emp.UserId;
                         UserName = emp.UserName;

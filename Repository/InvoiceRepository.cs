@@ -57,6 +57,8 @@ namespace CrudReportGenerate.Repository
                         get.InvoiceDate = it.InvoiceDate;
                         get.InvoiceAmount = it.InvoiceAmount;
                         get.PaymentDueDate = it.PaymentDueDate;
+                        get.CreatedBy = it.CreatedBy;
+                        get.CreatedDate = it.CreatedDate;
                         Items.Add(get);
                     }
 
@@ -68,6 +70,8 @@ namespace CrudReportGenerate.Repository
                     Cust.InvoiceDate = InvoiceModel.InvoiceDate;
                     Cust.InvoiceAmount = InvoiceModel.InvoiceAmount;
                     Cust.PaymentDueDate = Cust.InvoiceDate.AddDays(30);
+                    Cust.CreatedBy = InvoiceModel.CreatedBy;
+                    Cust.CreatedDate = DateTime.Now;
                     InvoiceNo = Cust.InvoiceNo;
 
                     bool Inv = Items.Any(asd => asd.InvoiceNo == InvoiceNo);
@@ -108,6 +112,8 @@ namespace CrudReportGenerate.Repository
                         get.InvoiceDate = it.InvoiceDate;
                         get.InvoiceAmount = it.InvoiceAmount;
                         get.PaymentDueDate = it.PaymentDueDate;
+                        get.ModifyBy = it.ModifyBy;
+                        get.ModifyDate = DateTime.Now;
                         Items.Add(get);
                     }
 
@@ -120,6 +126,8 @@ namespace CrudReportGenerate.Repository
                     Cust.InvoiceDate = InvoiceModel.InvoiceDate;
                     Cust.InvoiceAmount = InvoiceModel.InvoiceAmount;
                     Cust.PaymentDueDate = Cust.InvoiceDate.AddDays(30);
+                    Cust.ModifyBy = InvoiceModel.ModifyBy;
+                    Cust.ModifyDate = DateTime.Now;
                     dBContext.TblInvoices.Update(Cust);
                     InvoiceNo = Cust.InvoiceNo;
 

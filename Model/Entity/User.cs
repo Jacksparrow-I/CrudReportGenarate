@@ -16,5 +16,7 @@ namespace CrudReportGenerate.Model.Entity
         public string Gender { get; set; }
         public string Usertype { get; set; }
         public string Region { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
     }
 }
