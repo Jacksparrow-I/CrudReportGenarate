@@ -4,6 +4,10 @@
 );
 
 Truncate TABLE [User];
+Truncate TABLE [tblCustomer];
+Truncate TABLE [tblInvoices];
+Truncate TABLE [tblPayment];
+
 
 INSERT INTO tblCustomer VALUES
     (N'C00001',N'Kamal Enterprise'),
