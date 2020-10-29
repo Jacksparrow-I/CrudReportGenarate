@@ -207,13 +207,19 @@ namespace CrudReportGenerate.Repository
                 using (var dBContext = new CustomerReportContext())
                 {
                     Model.Common.Invoice inv;
-                    foreach (var it in dBContext.TblInvoices)
+                    foreach (var it in dBContext.TblInvoices.ToList())
                     {
                         if (it.InvoiceNo == Number)
                         {
+                            var customer = dBContext.TblCustomer.FirstOrDefault(x => x.CustomerNo == it.CustomerNo);
+
                             inv = new Model.Common.Invoice();
                             inv.InvoiceNo = it.InvoiceNo;
                             inv.CustomerNo = it.CustomerNo;
+                            if (customer != null)
+                            {
+                                inv.CustomerName = customer.CustomerName;
+                            }
                             inv.InvoiceDate = it.InvoiceDate;
                             inv.InvoiceAmount = it.InvoiceAmount;
                             inv.PaymentDueDate = it.PaymentDueDate;
