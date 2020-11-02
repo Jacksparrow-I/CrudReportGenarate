@@ -14,5 +14,6 @@ namespace CrudReportGenerate.Interface
         public int UpdateInvoice(Invoice InvoiceModel, string InvoiceNo, string InvoiceName);
         public int DeleteInvoice(string InvoiceNo);
         public Invoice InvoiceById(string InvoiceNo);
+        public List<Invoice> AutoIncrementInvoiceNo();
     }
 }

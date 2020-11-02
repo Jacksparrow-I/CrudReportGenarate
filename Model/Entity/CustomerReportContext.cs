@@ -15,6 +15,7 @@ namespace CrudReportGenerate.Model.Entity
         {
         }
 
+        public virtual DbSet<AutoIncrement> AutoIncrement { get; set; }
         public virtual DbSet<Registration> Registration { get; set; }
         public virtual DbSet<TblCustomer> TblCustomer { get; set; }
         public virtual DbSet<TblInvoices> TblInvoices { get; set; }
@@ -32,6 +33,12 @@ namespace CrudReportGenerate.Model.Entity
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AutoIncrement>(entity =>
+            {
+                entity.HasKey(e => e.AutoId)
+                    .HasName("PK__AutoIncr__6B232905457503C4");
+            });
+
             modelBuilder.Entity<Registration>(entity =>
             {
                 entity.Property(e => e.Password)
@@ -178,3 +185,4 @@ namespace CrudReportGenerate.Model.Entity
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
+

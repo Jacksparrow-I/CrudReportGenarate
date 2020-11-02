@@ -10,6 +10,8 @@ namespace CrudReportGenerate.Repository
 {
     public class CustomerRepository : ICustomer
     {
+        string Val;
+
         public List<Model.Common.Customer> GetCustomer()
         {
             List<Model.Common.Customer> Items = new List<Model.Common.Customer>();
@@ -74,11 +76,37 @@ namespace CrudReportGenerate.Repository
                     if (CustNo == false)
                     {
                         dBContext.TblCustomer.Add(Cust);
-                        returnVal = dBContext.SaveChanges();
+                        //returnVal = dBContext.SaveChanges();
                     }
 
-                    //returnVal = dBContext.SaveChanges();  
+                    //Add AutoIncreament
 
+                    AutoIncrement Auto = new AutoIncrement();
+
+                    int Num = Convert.ToInt32(Cust.CustomerNo.Substring(1));
+                    string Num1 = Convert.ToString(Num);
+                    foreach (var val in dBContext.AutoIncrement.ToList())
+                    {
+                        Auto.AutoCustomerNo = Num;
+                        Auto.AutoInvoiceNo = val.AutoInvoiceNo;
+                        Auto.AutoPaymentNo = val.AutoPaymentNo;
+
+                    }
+
+                    var rows = from cu in dBContext.AutoIncrement select cu;
+
+                    foreach (var row in rows)
+                    {
+                        if (row != null)
+                        {
+                            dBContext.AutoIncrement.Remove(row);
+                            //dbcontext.savechanges();
+                        }
+                    }
+
+                    dBContext.AutoIncrement.Add(Auto);
+
+                    returnVal = dBContext.SaveChanges();  
 
                 }
             }
@@ -166,6 +194,47 @@ namespace CrudReportGenerate.Repository
             return returnVal;
         }
 
+        public List<Customer> AutoIncrementCustomerNo()
+        {
+            List<Customer> Cust = new List<Customer>();
+            List<Customer> Cust1 = new List<Customer>();
+            using (var dBContext = new CustomerReportContext())
+            {
+                Customer data;
+                foreach (var Customer in dBContext.TblCustomer.ToList())
+                {
+                    data = new Customer();
+                    data.CustomerNo = Customer.CustomerNo;
+                    Cust.Add(data);
+                }
+
+                Customer data2;
+                foreach (var auto in dBContext.AutoIncrement.ToList())
+                {
+                    data2 = new Customer();
+                    int no;
+                    no = Convert.ToInt32(auto.AutoCustomerNo);
+                    no += 1;
+                    Val = "C" + no.ToString("D5");
+
+                    AutoBack:
+                    bool No = Cust.Any(x => x.CustomerNo == Val);
+                    if (No == true)
+                    {
+                        no += 1;
+                        Val = "C" + no.ToString("D5");
+                        goto AutoBack;
+
+                    }
+                    data2.CustomerNo = 'C' + Val.Substring(1); ;
+                    Cust1.Add(data2);
+                }
+
+            }
+
+            return Cust1;
+
+        }
 
         public Customer CustomerById(string CustomerNo)
         {

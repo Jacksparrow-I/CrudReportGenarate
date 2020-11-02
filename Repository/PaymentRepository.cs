@@ -10,6 +10,7 @@ namespace CrudReportGenerate.Repository
 {
     public class PaymentRepository : IPayment
     {
+        string Val;
         public List<Model.Common.Payment> GetPayment()
         {
             List<Model.Common.Payment> Items = new List<Model.Common.Payment>();
@@ -77,10 +78,38 @@ namespace CrudReportGenerate.Repository
                     {
                         returnVal = -1;
                     }
-                    else
+                    //else
+                    //{
+                    //    returnVal = dBContext.SaveChanges();
+                    //}
+
+                    //Add AutoIncreament
+
+                    AutoIncrement Auto = new AutoIncrement();
+
+                    int Num = Convert.ToInt32(Cust.PaymentNo.Substring(1));
+                    string Num1 = Convert.ToString(Num);
+                    foreach (var val in dBContext.AutoIncrement.ToList())
                     {
-                        returnVal = dBContext.SaveChanges();
+                        Auto.AutoCustomerNo = val.AutoCustomerNo;
+                        Auto.AutoInvoiceNo = val.AutoPaymentNo;
+                        Auto.AutoPaymentNo = Num;
                     }
+
+                    var rows = from cu in dBContext.AutoIncrement select cu;
+
+                    foreach (var row in rows)
+                    {
+                        if (row != null)
+                        {
+                            dBContext.AutoIncrement.Remove(row);
+                            //dbcontext.savechanges();
+                        }
+                    }
+
+                    dBContext.AutoIncrement.Add(Auto);
+
+                    returnVal = dBContext.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -170,6 +199,49 @@ namespace CrudReportGenerate.Repository
                 Console.WriteLine(ex.Message);
             }
             return returnVal;
+        }
+
+        public List<Payment> AutoIncrementPaymentNo()
+        {
+            List<Payment> Pay = new List<Payment>();
+
+            List<Payment> Pay1 = new List<Payment>();
+            using (var dBContext = new CustomerReportContext())
+            {
+                Payment data;
+                foreach (var Payments in dBContext.TblPayment.ToList())
+                {
+                    data = new Payment();
+                    data.PaymentNo = Payments.PaymentNo;
+                    Pay.Add(data);
+                }
+
+                Payment data2;
+                foreach (var auto in dBContext.AutoIncrement.ToList())
+                {
+                    data2 = new Payment();
+                    int no;
+                    no = Convert.ToInt32(auto.AutoPaymentNo);
+                    no += 1;
+                    Val = "P" + no.ToString("D5");
+
+                    AutoBack:
+                    bool No = Pay.Any(x => x.PaymentNo == Val);
+                    if (No == true)
+                    {
+                        no += 1;
+                        Val = "P" + no.ToString("D5");
+                        goto AutoBack;
+
+                    }
+                    data2.PaymentNo = 'P' + Val.Substring(1); ;
+                    Pay1.Add(data2);
+                }
+
+            }
+
+            return Pay1;
+
         }
 
         public Payment PaymentById(string PaymentNo)

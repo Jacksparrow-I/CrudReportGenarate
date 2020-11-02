@@ -13,5 +13,6 @@ namespace CrudReportGenerate.Interface
         public int UpdateCustomer(Customer CustomerModel, string CustomerNo, string CustomerName);
         public int DeleteCustomer(string CustomerNo);
         public Customer CustomerById(string CustomerNo);
+        public List<Customer> AutoIncrementCustomerNo();
     }
 }

@@ -52,6 +52,12 @@ namespace CrudReportGenerate.Controllers
             return _IPayment.DeletePayment(PaymentNo);
         }
 
+        [HttpGet("AutoIncrementPaymentNo")]
+        public List<Payment> AutoIncrementPaymentNo()
+        {
+            return _IPayment.AutoIncrementPaymentNo();
+        }
+
         [HttpGet("PaymentById/{PaymentNo}")]
         public Payment PaymentById(string PaymentNo)
         {

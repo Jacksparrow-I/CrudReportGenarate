@@ -51,6 +51,12 @@ namespace CrudReportGenerate.Controllers
             return _ICustomer.DeleteCustomer(CustomerNo);
         }
 
+        [HttpGet("AutoIncrementCustomerNo")]
+        public List<Customer> AutoIncrementCustomerNo()
+        {
+            return _ICustomer.AutoIncrementCustomerNo();
+        }
+
         [HttpGet("CustomerById/{CustomerNo}")]
         public Customer CustomerById(string CustomerNo)
         {

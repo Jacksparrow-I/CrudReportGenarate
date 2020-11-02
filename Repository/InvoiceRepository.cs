@@ -10,6 +10,7 @@ namespace CrudReportGenerate.Repository
 {
     public class InvoiceRepository : IInvoice
     {
+        string Val;
         public List<Model.Common.Invoice> GetInvoice()
         {
             List<Model.Common.Invoice> Items = new List<Model.Common.Invoice>();
@@ -92,6 +93,34 @@ namespace CrudReportGenerate.Repository
                         dBContext.TblInvoices.Add(Cust);
                         returnVal = dBContext.SaveChanges();
                     }
+
+                    //Add AutoIncreament
+
+                    AutoIncrement Auto = new AutoIncrement();
+
+                    int Num = Convert.ToInt32(Cust.InvoiceNo.Substring(1));
+                    string Num1 = Convert.ToString(Num);
+                    foreach (var val in dBContext.AutoIncrement.ToList())
+                    {
+                        Auto.AutoCustomerNo = val.AutoCustomerNo;
+                        Auto.AutoInvoiceNo = Num;
+                        Auto.AutoPaymentNo = val.AutoPaymentNo;
+                    }
+
+                    var rows = from cu in dBContext.AutoIncrement select cu;
+
+                    foreach (var row in rows)
+                    {
+                        if (row != null)
+                        {
+                            dBContext.AutoIncrement.Remove(row);
+                            //dbcontext.savechanges();
+                        }
+                    }
+
+                    dBContext.AutoIncrement.Add(Auto);
+
+                    returnVal = dBContext.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -194,6 +223,49 @@ namespace CrudReportGenerate.Repository
                 Console.WriteLine(ex.Message);
             }
             return returnVal;
+        }
+
+        public List<Invoice> AutoIncrementInvoiceNo()
+        {
+            List<Invoice> Inv = new List<Invoice>();
+            List<Invoice> Inv1 = new List<Invoice>();
+            using (var dBContext = new CustomerReportContext())
+            {
+                Invoice data;
+                foreach (var Invoices in dBContext.TblInvoices.ToList())
+                {
+                    data = new Invoice();
+                    data.InvoiceNo = Invoices.InvoiceNo;
+                    Inv.Add(data);
+                }
+
+                Invoice data2;
+                foreach (var auto in dBContext.AutoIncrement.ToList())
+                {
+                    data2 = new Invoice();
+                    int no;
+                    no = Convert.ToInt32(auto.AutoInvoiceNo);
+                    no += 1;
+                    Val = "I" + no.ToString("D5");
+
+                    AutoBack:
+                    bool No = Inv.Any(x => x.InvoiceNo == Val);
+                    if (No == true)
+                    {
+                        no += 1;
+                        Val = "I" + no.ToString("D5");
+                        goto AutoBack;
+
+                    }
+                    data2.InvoiceNo = 'I' + Val.Substring(1); ;
+                    Inv1.Add(data2);
+                }
+
+
+            }
+
+            return Inv1;
+
         }
 
         public Invoice InvoiceById(string InvoiceNo)

@@ -51,6 +51,12 @@ namespace CrudReportGenerate.Controllers
             return _IInvoice.DeleteInvoice(InvoiceNo);
         }
 
+        [HttpGet("AutoIncrementInvoiceNo")]
+        public List<Invoice> AutoIncrementInvoiceNo()
+        {
+            return _IInvoice.AutoIncrementInvoiceNo();
+        }
+
         [HttpGet("InvoiceById/{InvoiceNo}")]
         public Invoice InvoiceById(string InvoiceNo)
         {

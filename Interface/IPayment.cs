@@ -14,6 +14,7 @@ namespace CrudReportGenerate.Interface
         public int DeletePayment(string PaymentNo);
         public Payment PaymentById(string PaymentNo);
         public List<Model.Common.Invoice> GetInvoiceDetails(string Number);
+        public List<Payment> AutoIncrementPaymentNo();
 
     }
 }
