@@ -17,6 +17,8 @@ using CrudReportGenerate.Interface;
 using System.Text;
 using System.IO;
 using Microsoft.AspNetCore.Http.Features;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace CrudReportGenarate
 {
@@ -72,6 +74,13 @@ namespace CrudReportGenarate
                 };
             });
 
+            //  Swager
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Customer_Invoice_Payment_Management", Version = "v1" });
+
+            });
+
             services.AddControllers();
             services.AddScoped<ICustomer, CustomerRepository>();
             services.AddScoped<IInvoice, InvoiceRepository>();
@@ -89,6 +98,12 @@ namespace CrudReportGenarate
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            });
 
             app.UseRouting();
             app.UseCors();
