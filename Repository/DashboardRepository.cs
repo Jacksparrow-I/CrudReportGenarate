@@ -60,10 +60,7 @@ namespace CrudReportGenerate.Repository
 
                         foreach (var chdashboard in DashboardChart.ToList())
                         {
-                            var it1 = chdashboard.MonthAndYearDate.Date;
-                            var it2 = chartdb.InvoiceDate.Date;
-
-                            if (it1 == it2)
+                            if (chdashboard.MonthAndYearDate.Month == chartdb.InvoiceDate.Month && chdashboard.MonthAndYearDate.Year == chartdb.InvoiceDate.Year)
                             {
                                 chdashboard.ChartSales += chartdb.InvoiceAmount;
                                 Flag = true;
@@ -72,7 +69,7 @@ namespace CrudReportGenerate.Repository
 
                         if (Flag == false)
                         {
-                            chdb.MonthAndYearDate = chartdb.InvoiceDate;
+                            chdb.MonthAndYearDate = new DateTime(chartdb.InvoiceDate.Year, chartdb.InvoiceDate.Month, 01);
                             chdb.ChartSales = chartdb.InvoiceAmount;
                             DashboardChart.Add(chdb);
                         }
@@ -86,10 +83,7 @@ namespace CrudReportGenerate.Repository
 
                         foreach (var chdashboard in DashboardChart.ToList())
                         {
-                            var it1 = chdashboard.MonthAndYearDate.Date;
-                            var it2 = chartdb.PaymentDate.Date;
-
-                            if (it1 == it2)
+                            if (chdashboard.MonthAndYearDate.Month == chartdb.PaymentDate.Month && chdashboard.MonthAndYearDate.Year == chartdb.PaymentDate.Year)
                             {
                                 chdashboard.ChartPayment += chartdb.PaymentAmount;
                                 Flag = true;
@@ -98,7 +92,7 @@ namespace CrudReportGenerate.Repository
 
                         if (Flag == false)
                         {
-                            chdb.MonthAndYearDate = chartdb.PaymentDate;
+                            chdb.MonthAndYearDate = new DateTime(chartdb.PaymentDate.Year, chartdb.PaymentDate.Month, 01);
                             chdb.ChartPayment = chartdb.PaymentAmount;
                             DashboardChart.Add(chdb);
                         }

@@ -90,7 +90,6 @@ namespace CrudReportGenerate.Repository
                         Auto.AutoCustomerNo = Num;
                         Auto.AutoInvoiceNo = val.AutoInvoiceNo;
                         Auto.AutoPaymentNo = val.AutoPaymentNo;
-
                     }
 
                     var rows = from cu in dBContext.AutoIncrement select cu;
