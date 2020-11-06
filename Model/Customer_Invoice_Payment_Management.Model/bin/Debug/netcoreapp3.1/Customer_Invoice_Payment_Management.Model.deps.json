@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Customer_Invoice_Payment_Management.Model/1.0.0": {
+        "runtime": {
+          "Customer_Invoice_Payment_Management.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Customer_Invoice_Payment_Management.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

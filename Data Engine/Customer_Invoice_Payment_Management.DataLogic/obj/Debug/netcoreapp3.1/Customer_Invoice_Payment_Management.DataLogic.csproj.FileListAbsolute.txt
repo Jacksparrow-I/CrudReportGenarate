@@ -1,0 +1,15 @@
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.csprojAssemblyReference.cache
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.AssemblyInfoInputs.cache
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.AssemblyInfo.cs
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.csproj.CoreCompileInputs.cache
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\bin\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.deps.json
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\bin\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.dll
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\bin\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.runtimeconfig.json
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\bin\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.runtimeconfig.dev.json
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.genruntimeconfig.cache
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\bin\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.Model.dll
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\bin\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.Model.pdb
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.csproj.CopyComplete
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\bin\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.pdb
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.dll
+C:\Users\nprajapati\source\repos\CrudReportGenarate\Data Engine\Customer_Invoice_Payment_Management.DataLogic\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.DataLogic.pdb
