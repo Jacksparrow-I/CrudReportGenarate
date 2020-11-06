@@ -3,7 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudReportGenerate", "CrudReportGenerate.csproj", "{696E0AE3-7F02-4C5A-AD2D-580A1231E7E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudReportGenerate", "Api\CrudReportGenerate.csproj", "{696E0AE3-7F02-4C5A-AD2D-580A1231E7E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Presentation Layer", "01 Presentation Layer", "{8EF2B15F-A5C7-454D-B407-79829EBF7004}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Business Logic Layer", "02 Business Logic Layer", "{6BA2DADE-6B3D-4C03-BE0C-D1B837D99177}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 Data Access Layer", "03 Data Access Layer", "{6485FB39-47BD-4DDF-B308-7E068DE0D574}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 Common Layer", "04 Common Layer", "{82391C95-BE36-4393-9020-DF6676F1792F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customer_Invoice_Payment_Management.BusinessLogic", "Business\Customer_Invoice_Payment_Management.BusinessLogic\Customer_Invoice_Payment_Management.BusinessLogic.csproj", "{3E49110B-61D7-47D3-AD7C-F3F642A8F780}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customer_Invoice_Payment_Management.DataLogic", "Data Engine\Customer_Invoice_Payment_Management.DataLogic\Customer_Invoice_Payment_Management.DataLogic.csproj", "{5C213407-409F-43E7-965E-66E9D520D712}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customer_Invoice_Payment_Management.Model", "Model\Customer_Invoice_Payment_Management.Model\Customer_Invoice_Payment_Management.Model.csproj", "{FCC94502-3E07-4F44-AA6D-545C3B538DF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +29,27 @@ Global
 		{696E0AE3-7F02-4C5A-AD2D-580A1231E7E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{696E0AE3-7F02-4C5A-AD2D-580A1231E7E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{696E0AE3-7F02-4C5A-AD2D-580A1231E7E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E49110B-61D7-47D3-AD7C-F3F642A8F780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E49110B-61D7-47D3-AD7C-F3F642A8F780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E49110B-61D7-47D3-AD7C-F3F642A8F780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E49110B-61D7-47D3-AD7C-F3F642A8F780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C213407-409F-43E7-965E-66E9D520D712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C213407-409F-43E7-965E-66E9D520D712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C213407-409F-43E7-965E-66E9D520D712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C213407-409F-43E7-965E-66E9D520D712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC94502-3E07-4F44-AA6D-545C3B538DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC94502-3E07-4F44-AA6D-545C3B538DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC94502-3E07-4F44-AA6D-545C3B538DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC94502-3E07-4F44-AA6D-545C3B538DF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{696E0AE3-7F02-4C5A-AD2D-580A1231E7E4} = {8EF2B15F-A5C7-454D-B407-79829EBF7004}
+		{3E49110B-61D7-47D3-AD7C-F3F642A8F780} = {6BA2DADE-6B3D-4C03-BE0C-D1B837D99177}
+		{5C213407-409F-43E7-965E-66E9D520D712} = {6485FB39-47BD-4DDF-B308-7E068DE0D574}
+		{FCC94502-3E07-4F44-AA6D-545C3B538DF3} = {82391C95-BE36-4393-9020-DF6676F1792F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {55C512CC-613A-474D-A9BD-05201D6265A4}
