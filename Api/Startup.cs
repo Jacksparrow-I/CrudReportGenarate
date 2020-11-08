@@ -19,6 +19,9 @@ using System.IO;
 using Microsoft.AspNetCore.Http.Features;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
+using CrudReportGenerate.AutoMapper;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
 
 namespace CrudReportGenarate
 {
@@ -74,6 +77,9 @@ namespace CrudReportGenarate
                 };
             });
 
+            //Configure mapping profile, Auto Mapper Configurations
+            _ = services.AddSingleton(MappingConfiguration.RegisterProfiles());
+
             //  Swager
             services.AddSwaggerGen(c =>
             {
@@ -81,6 +87,7 @@ namespace CrudReportGenarate
 
             });
 
+            #region Data Access Layer
             services.AddControllers();
             services.AddScoped<ICustomer, CustomerRepository>();
             services.AddScoped<IInvoice, InvoiceRepository>();
@@ -89,6 +96,20 @@ namespace CrudReportGenarate
             services.AddScoped<ILogin, LoginRepository>();
             services.AddScoped<IDashboard, DashboardRepository>();
             services.AddScoped<IAuthenticate, AuthenticateRepository>();
+            #endregion
+
+
+            #region Business Logic Layer
+            services.AddControllers();
+            services.AddScoped<ICustomerServices, CustomerServices>();
+            services.AddScoped<IInvoiceServices, InvoiceServices>();
+            services.AddScoped<IPaymentServices, PaymentServices>();
+            services.AddScoped<IReportServices, ReportServices>();
+            services.AddScoped<ILoginServices, LoginServices>();
+            services.AddScoped<IDashboardServices, DashbordServices>();
+            services.AddScoped<IAuthenticateServices, AuthenticateServices>();
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

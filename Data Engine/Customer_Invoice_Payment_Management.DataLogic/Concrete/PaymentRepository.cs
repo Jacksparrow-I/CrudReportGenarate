@@ -38,7 +38,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
             return Items;
         }
 
-        public int AddPaymentData(Payment PaymentModel, string PaymentNo)
+        public int AddPaymentData(TblPayment PaymentModel, string PaymentNo)
         {
             List<Payment> Items = new List<Payment>();
             List<Invoice> InvItems = new List<Invoice>();
@@ -119,7 +119,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
             return returnVal;
         }
 
-        public int UpdatePayment(Payment PaymentModel, string PaymentNo, string PaymentName)
+        public int UpdatePayment(TblPayment PaymentModel, string PaymentNo, string PaymentName)
         {
             List<Payment> Items = new List<Payment>();
 
@@ -244,9 +244,9 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
 
         }
 
-        public Payment PaymentById(string PaymentNo)
+        public TblPayment PaymentById(string PaymentNo)
         {
-            Payment Cust = new Payment();
+            TblPayment Cust = new TblPayment();
             try
             {
                 using (var dBContext = new CustomerReportContext())

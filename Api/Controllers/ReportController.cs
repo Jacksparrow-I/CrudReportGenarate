@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
-using Customer_Invoice_Payment_Management.Model.Common;
 using Customer_Invoice_Payment_Management.DataLogic.Concrete;
 using Customer_Invoice_Payment_Management.DataLogic.Abstract;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
 
 namespace CrudReportGenerate.Controllers
 {
@@ -20,15 +21,15 @@ namespace CrudReportGenerate.Controllers
     [ApiController]
     public class ReportController : ControllerBase
     {
-        private readonly IReport _IReport;
+        private readonly IReportServices _IReport;
 
-        public ReportController(IReport Report)
+        public ReportController(IReportServices Report)
         {
             _IReport = Report;
         }
 
         [HttpGet("GetReports")]
-        public List<Reports> GetReports()
+        public List<Report> GetReports()
         {
             return _IReport.GetReports();
         }

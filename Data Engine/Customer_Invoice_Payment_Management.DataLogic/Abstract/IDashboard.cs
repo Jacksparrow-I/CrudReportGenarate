@@ -1,4 +1,5 @@
-﻿using Customer_Invoice_Payment_Management.Model.Common;
+﻿using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
+using Customer_Invoice_Payment_Management.Model.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Abstract
     {
         public List<Dashboard> GetDashboardDetails();
         public List<Chart> DisplayChart();
-        public int Editprofile(Userdata UserModel, string UserName, int UserId);
-        public Userdata GetEditprofileById(int UserId);
+        public int Editprofile(User UserModel, string UserName, int UserId);
+        public User GetEditprofileById(int UserId);
     }
 }

@@ -110,7 +110,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
             return DashboardChart;
         }
 
-        public int Editprofile(Userdata UserModel, string UserName, int UserId)
+        public int Editprofile(User UserModel, string UserName, int UserId)
         {
             List<Userdata> Items = new List<Userdata>();
 
@@ -180,9 +180,9 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
             return returnVal;
         }
 
-        public Userdata GetEditprofileById(int UserId)
+        public User GetEditprofileById(int UserId)
         {
-            Userdata Cust = new Userdata();
+            User Cust = new User();
             try
             {
                 using (var dBContext = new CustomerReportContext())

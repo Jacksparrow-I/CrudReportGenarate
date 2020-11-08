@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
-using Customer_Invoice_Payment_Management.Model.Common;
 using Customer_Invoice_Payment_Management.DataLogic.Concrete;
 using Customer_Invoice_Payment_Management.DataLogic.Abstract;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
+using Customer_Invoice_Payment_Management.Model.Common;
 
 namespace CrudReportGenerate.Controllers
 {
@@ -20,9 +22,9 @@ namespace CrudReportGenerate.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        private readonly IPayment _IPayment;
+        private readonly IPaymentServices _IPayment;
 
-        public PaymentController(IPayment TblPayment)
+        public PaymentController(IPaymentServices TblPayment)
         {
             _IPayment = TblPayment;
         }
@@ -34,13 +36,13 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpPost("AddPaymentData")]
-        public int AddPaymentData([FromBody] Payment PaymentModel, string PaymentNo)
+        public int AddPaymentData([FromBody] Payments PaymentModel, string PaymentNo)
         {
             return _IPayment.AddPaymentData(PaymentModel, PaymentNo);
         }
 
         [HttpPost("UpdatePayment/{InvoiceNo}")]
-        public int UpdatePayment([FromBody] Payment PaymentModel, string PaymentNo, string PaymentName)
+        public int UpdatePayment([FromBody] Payments PaymentModel, string PaymentNo, string PaymentName)
         {
             //**** move this below code to dependency injection ****
             return _IPayment.UpdatePayment(PaymentModel, PaymentNo, PaymentName);
@@ -59,7 +61,7 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpGet("PaymentById/{PaymentNo}")]
-        public Payment PaymentById(string PaymentNo)
+        public Payments PaymentById(string PaymentNo)
         {
             return _IPayment.PaymentById(PaymentNo);
         }

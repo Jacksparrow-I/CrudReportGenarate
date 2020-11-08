@@ -11,9 +11,9 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Abstract
     {
         public Userdata Authenticate(Userdata Model);
         public List<User> GetLogindetails();
-        public int Registration(Userdata UserModel, string UserName);
-        public int Editprofile(Userdata UserModel, string UserName, int UserId);
-        public Userdata GetEditprofileById(int UserId);
+        public int Registration(User UserModel, string UserName);
+        public int Editprofile(User UserModel, string UserName, int UserId);
+        public User GetEditprofileById(int UserId);
 
     }
 }

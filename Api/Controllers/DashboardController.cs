@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Customer_Invoice_Payment_Management.DataLogic.Abstract;
-using Customer_Invoice_Payment_Management.Model.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
+using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
 
 namespace CrudReportGenerate.Controllers
 {
@@ -18,33 +20,33 @@ namespace CrudReportGenerate.Controllers
     [ApiController]
     public class DashboardController : ControllerBase
     {
-        private IDashboard _IDashboard;
-        public DashboardController(IDashboard Dashboard)
+        private IDashboardServices _IDashboard;
+        public DashboardController(IDashboardServices Dashboard)
         {
             _IDashboard = Dashboard;
         }
 
         [HttpGet("GetDashboardDetails")]
-        public List<Dashboard> GetDashboardDetails()
+        public List<Dashboards> GetDashboardDetails()
         {
             return _IDashboard.GetDashboardDetails();
         }
-        
+
 
         [HttpGet("DisplayChart")]
-        public List<Chart> DisplayChart()
+        public List<Charts> DisplayChart()
         {
             return _IDashboard.DisplayChart();
         }
 
         [HttpPost("Editprofile/{UserID}")]
-        public int Editprofile([FromBody] Userdata UserModel, string UserName, int UserId)
+        public int Editprofile([FromBody] user UserModel, string UserName, int UserId)
         {
             return _IDashboard.Editprofile(UserModel, UserName, UserId);
         }
 
         [HttpGet("GetEditprofileById/{UserId}")]
-        public Userdata GetEditprofileById(int UserId)
+        public user GetEditprofileById(int UserId)
         {
             return _IDashboard.GetEditprofileById(UserId);
         }

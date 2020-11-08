@@ -1,9 +1,11 @@
-﻿using Customer_Invoice_Payment_Management.Model.Common;
-using Customer_Invoice_Payment_Management.DataLogic.Abstract;
+﻿using Customer_Invoice_Payment_Management.DataLogic.Abstract;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
+using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
+using Customer_Invoice_Payment_Management.Model.Common;
 
 namespace CrudReportGenerate.Controllers
 {
@@ -12,32 +14,32 @@ namespace CrudReportGenerate.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private IAuthenticate _authenticateService;
-        public AuthenticationController(IAuthenticate authenticateService)
+        private IAuthenticateServices _authenticateService;
+        public AuthenticationController(IAuthenticateServices authenticateService)
         {
             _authenticateService = authenticateService;
         }
 
         [HttpGet("GetLogindetails")]
-        public List<User> GetLogindetails()
+        public List<user> GetLogindetails()
         {
             return _authenticateService.GetLogindetails();
         }
 
         [HttpPost("Registration")]
-        public int Registration([FromBody] Userdata UserModel, string UserName)
+        public int Registration([FromBody] user UserModel, string UserName)
         {
             return _authenticateService.Registration(UserModel, UserName);
         }
 
         [HttpPost("Editprofile/{UserID}")]
-        public int Editprofile([FromBody] Userdata UserModel, string UserName, int UserId)
+        public int Editprofile([FromBody] user UserModel, string UserName, int UserId)
         {
             return _authenticateService.Editprofile(UserModel, UserName, UserId);
         }
 
         [HttpGet("GetEditprofileById/{UserId}")]
-        public Userdata GetEditprofileById(int UserId)
+        public user GetEditprofileById(int UserId)
         {
             return _authenticateService.GetEditprofileById(UserId);
         }

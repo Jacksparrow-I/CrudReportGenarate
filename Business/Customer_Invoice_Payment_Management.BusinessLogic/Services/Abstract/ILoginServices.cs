@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract
+﻿namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
 {
     public interface ILoginServices
     {

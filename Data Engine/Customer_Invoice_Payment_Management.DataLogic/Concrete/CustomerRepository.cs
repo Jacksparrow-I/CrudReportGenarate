@@ -38,7 +38,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
             return Items;
         }
 
-        public int AddCustomerData(Customer CustomerModel, string CustomerNo)
+        public int AddCustomerData(TblCustomer CustomerModel, string CustomerNo)
         {
             List<Customer> Items = new List<Customer>();
 
@@ -116,7 +116,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
             return returnVal;
         }
 
-        public int UpdateCustomer(Customer CustomerModel, string CustomerNo, string CustomerName)
+        public int UpdateCustomer(TblCustomer CustomerModel, string CustomerNo, string CustomerName)
         {
             List<Customer> Items = new List<Customer>();
 
@@ -235,9 +235,9 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
 
         }
 
-        public Customer CustomerById(string CustomerNo)
+        public TblCustomer CustomerById(string CustomerNo)
         {
-            Customer Cust = new Customer();
+            TblCustomer Cust = new TblCustomer();
             try
             {
                 using (var dBContext = new CustomerReportContext())
