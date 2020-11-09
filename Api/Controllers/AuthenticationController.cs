@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
 using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
-using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
 using Customer_Invoice_Payment_Management.Model.Common;
 
 namespace CrudReportGenerate.Controllers
@@ -21,25 +20,25 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpGet("GetLogindetails")]
-        public List<user> GetLogindetails()
+        public List<User> GetLogindetails()
         {
             return _authenticateService.GetLogindetails();
         }
 
         [HttpPost("Registration")]
-        public int Registration([FromBody] user UserModel, string UserName)
+        public int Registration([FromBody] User UserModel, string UserName)
         {
             return _authenticateService.Registration(UserModel, UserName);
         }
 
         [HttpPost("Editprofile/{UserID}")]
-        public int Editprofile([FromBody] user UserModel, string UserName, int UserId)
+        public int Editprofile([FromBody] User UserModel, string UserName, int UserId)
         {
             return _authenticateService.Editprofile(UserModel, UserName, UserId);
         }
 
         [HttpGet("GetEditprofileById/{UserId}")]
-        public user GetEditprofileById(int UserId)
+        public User GetEditprofileById(int UserId)
         {
             return _authenticateService.GetEditprofileById(UserId);
         }

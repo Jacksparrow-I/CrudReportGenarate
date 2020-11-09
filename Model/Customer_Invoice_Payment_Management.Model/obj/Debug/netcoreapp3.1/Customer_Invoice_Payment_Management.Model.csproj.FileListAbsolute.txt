@@ -6,4 +6,3 @@ C:\Users\nprajapati\source\repos\CrudReportGenarate\Model\Customer_Invoice_Payme
 C:\Users\nprajapati\source\repos\CrudReportGenarate\Model\Customer_Invoice_Payment_Management.Model\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.Model.csproj.CoreCompileInputs.cache
 C:\Users\nprajapati\source\repos\CrudReportGenarate\Model\Customer_Invoice_Payment_Management.Model\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.Model.dll
 C:\Users\nprajapati\source\repos\CrudReportGenarate\Model\Customer_Invoice_Payment_Management.Model\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.Model.pdb
-C:\Users\nprajapati\source\repos\CrudReportGenarate\Model\Customer_Invoice_Payment_Management.Model\obj\Debug\netcoreapp3.1\Customer_Invoice_Payment_Management.Model.csprojAssemblyReference.cache

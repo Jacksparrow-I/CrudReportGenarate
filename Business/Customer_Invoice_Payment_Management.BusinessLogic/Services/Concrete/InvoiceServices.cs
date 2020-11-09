@@ -1,8 +1,6 @@
-﻿
-using AutoMapper;
-using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
-using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
+﻿using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
 using Customer_Invoice_Payment_Management.DataLogic.Abstract;
+using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
 using Customer_Invoice_Payment_Management.Model.Common;
 using System;
 using System.Collections.Generic;
@@ -12,22 +10,20 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
 {
     public class InvoiceServices : IInvoiceServices
     {
-        private readonly IMapper _imapper;
         private readonly IInvoice _Invoice;
-        public InvoiceServices(IMapper imapper, IInvoice Invoice)
+        public InvoiceServices( IInvoice Invoice)
         {
-            _imapper = imapper;
             _Invoice = Invoice;
 
         }
-        public int AddInvoiceData(Invoices InvoiceModel, string InvoiceNo)
+        public int AddInvoiceData(TblInvoices InvoiceModel, string InvoiceNo)
         {
-            return _Invoice.AddInvoiceData(_imapper.Map<Customer_Invoice_Payment_Management.DataLogic.DatabaseModel.TblInvoices>(InvoiceModel), InvoiceNo);
+            return _Invoice.AddInvoiceData(InvoiceModel, InvoiceNo);
         }
 
         public List<Invoice> AutoIncrementInvoiceNo()
         {
-            return _imapper.Map<List<Invoice>>(_Invoice.AutoIncrementInvoiceNo());
+            return _Invoice.AutoIncrementInvoiceNo();
         }
 
         public int DeleteInvoice(string InvoiceNo)
@@ -37,17 +33,17 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
 
         public List<Invoice> GetInvoice()
         {
-            return _imapper.Map<List<Invoice>>(_Invoice.GetInvoice());
+            return _Invoice.GetInvoice();
         }
 
-        public Invoices InvoiceById(string InvoiceNo)
+        public TblInvoices InvoiceById(string InvoiceNo)
         {
-            return _imapper.Map<Invoices>(_Invoice.InvoiceById(InvoiceNo));
+            return _Invoice.InvoiceById(InvoiceNo);
         }
 
-        public int UpdateInvoice(Invoices InvoiceModel, string InvoiceNo, string InvoiceName)
+        public int UpdateInvoice(TblInvoices InvoiceModel, string InvoiceNo, string InvoiceName)
         {
-            return _Invoice.UpdateInvoice(_imapper.Map<Customer_Invoice_Payment_Management.DataLogic.DatabaseModel.TblInvoices>(InvoiceModel), InvoiceNo, InvoiceName);
+            return _Invoice.UpdateInvoice(InvoiceModel, InvoiceNo, InvoiceName);
         }
     }
 }

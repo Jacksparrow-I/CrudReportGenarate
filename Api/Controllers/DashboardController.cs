@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
-using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
 using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
+using Customer_Invoice_Payment_Management.Model.Common;
 
 namespace CrudReportGenerate.Controllers
 {
@@ -27,26 +27,26 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpGet("GetDashboardDetails")]
-        public List<Dashboards> GetDashboardDetails()
+        public List<Dashboard> GetDashboardDetails()
         {
             return _IDashboard.GetDashboardDetails();
         }
 
 
         [HttpGet("DisplayChart")]
-        public List<Charts> DisplayChart()
+        public List<Chart> DisplayChart()
         {
             return _IDashboard.DisplayChart();
         }
 
         [HttpPost("Editprofile/{UserID}")]
-        public int Editprofile([FromBody] user UserModel, string UserName, int UserId)
+        public int Editprofile([FromBody] User UserModel, string UserName, int UserId)
         {
             return _IDashboard.Editprofile(UserModel, UserName, UserId);
         }
 
         [HttpGet("GetEditprofileById/{UserId}")]
-        public user GetEditprofileById(int UserId)
+        public User GetEditprofileById(int UserId)
         {
             return _IDashboard.GetEditprofileById(UserId);
         }

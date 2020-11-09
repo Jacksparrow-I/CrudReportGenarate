@@ -10,8 +10,8 @@ using Customer_Invoice_Payment_Management.DataLogic.Abstract;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
-using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
 using Customer_Invoice_Payment_Management.Model.Common;
+using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
 
 namespace CrudReportGenerate.Controllers
 {
@@ -36,13 +36,13 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpPost("AddCustomerData")]
-        public int AddCustomerData([FromBody] Customers CustomerModel, string CustomerNo)
+        public int AddCustomerData([FromBody] TblCustomer CustomerModel, string CustomerNo)
         {
             return _CustomerServices.AddCustomerData(CustomerModel, CustomerNo);
         }
 
         [HttpPost("UpdateCustomer/{CustomerNo}")]
-        public int UpdateCustomer([FromBody] Customers CustomerModel, string CustomerNo, string CustomerName)
+        public int UpdateCustomer([FromBody] TblCustomer CustomerModel, string CustomerNo, string CustomerName)
         {
             return _CustomerServices.UpdateCustomer(CustomerModel, CustomerNo, CustomerName);
         }
@@ -60,7 +60,7 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpGet("CustomerById/{CustomerNo}")]
-        public Customers CustomerById(string CustomerNo)
+        public TblCustomer CustomerById(string CustomerNo)
         {
             return _CustomerServices.CustomerById(CustomerNo);
         }

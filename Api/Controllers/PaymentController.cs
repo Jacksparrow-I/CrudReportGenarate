@@ -10,8 +10,8 @@ using Customer_Invoice_Payment_Management.DataLogic.Abstract;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
-using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
 using Customer_Invoice_Payment_Management.Model.Common;
+using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
 
 namespace CrudReportGenerate.Controllers
 {
@@ -36,13 +36,13 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpPost("AddPaymentData")]
-        public int AddPaymentData([FromBody] Payments PaymentModel, string PaymentNo)
+        public int AddPaymentData([FromBody] TblPayment PaymentModel, string PaymentNo)
         {
             return _IPayment.AddPaymentData(PaymentModel, PaymentNo);
         }
 
         [HttpPost("UpdatePayment/{InvoiceNo}")]
-        public int UpdatePayment([FromBody] Payments PaymentModel, string PaymentNo, string PaymentName)
+        public int UpdatePayment([FromBody] TblPayment PaymentModel, string PaymentNo, string PaymentName)
         {
             //**** move this below code to dependency injection ****
             return _IPayment.UpdatePayment(PaymentModel, PaymentNo, PaymentName);
@@ -61,7 +61,7 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpGet("PaymentById/{PaymentNo}")]
-        public Payments PaymentById(string PaymentNo)
+        public TblPayment PaymentById(string PaymentNo)
         {
             return _IPayment.PaymentById(PaymentNo);
         }

@@ -1,7 +1,7 @@
-﻿using AutoMapper;
+﻿
 using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
-using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
 using Customer_Invoice_Payment_Management.DataLogic.Abstract;
+using Customer_Invoice_Payment_Management.DataLogic.DatabaseModel;
 using Customer_Invoice_Payment_Management.Model.Common;
 using System;
 using System.Collections.Generic;
@@ -11,32 +11,30 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
 {
     public class DashbordServices : IDashboardServices
     {
-        private readonly IMapper _imapper;
         private readonly IDashboard _Dashboard;
-        public DashbordServices(IMapper imapper, IDashboard Dashboard)
+        public DashbordServices(IDashboard Dashboard)
         {
-            _imapper = imapper;
             _Dashboard = Dashboard;
         }
 
-        public List<Charts> DisplayChart()
+        public List<Chart> DisplayChart()
         {
-            return _imapper.Map<List<Charts>>(_Dashboard.DisplayChart());
+            return _Dashboard.DisplayChart();
         }
 
-        public int Editprofile(user UserModel, string UserName, int UserId)
+        public int Editprofile(User UserModel, string UserName, int UserId)
         {
-            return _Dashboard.Editprofile(_imapper.Map<Customer_Invoice_Payment_Management.DataLogic.DatabaseModel.User>(UserModel), UserName, UserId);
+            return _Dashboard.Editprofile(UserModel, UserName, UserId);
         }
 
-        public List<Dashboards> GetDashboardDetails()
+        public List<Dashboard> GetDashboardDetails()
         {
-            return _imapper.Map<List<Dashboards>>(_Dashboard.GetDashboardDetails());
+            return _Dashboard.GetDashboardDetails();
         }
 
-        public user GetEditprofileById(int UserId)
+        public User GetEditprofileById(int UserId)
         {
-            return _imapper.Map<user>(_Dashboard.GetEditprofileById(UserId));
+            return _Dashboard.GetEditprofileById(UserId);
         }
     }
 }

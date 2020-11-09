@@ -10,7 +10,7 @@ using Customer_Invoice_Payment_Management.DataLogic.Abstract;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
-using Customer_Invoice_Payment_Management.BusinessLogic.Services.BusinessModel;
+using Customer_Invoice_Payment_Management.Model.Common;
 
 namespace CrudReportGenerate.Controllers
 {
@@ -29,7 +29,7 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpGet("GetReports")]
-        public List<Report> GetReports()
+        public List<Reports> GetReports()
         {
             return _IReport.GetReports();
         }

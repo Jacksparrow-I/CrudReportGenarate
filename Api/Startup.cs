@@ -19,7 +19,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http.Features;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
-using CrudReportGenerate.AutoMapper;
+////using CrudReportGenerate.AutoMapper;
 using Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete;
 using Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract;
 
@@ -77,8 +77,8 @@ namespace CrudReportGenarate
                 };
             });
 
-            //Configure mapping profile, Auto Mapper Configurations
-            _ = services.AddSingleton(MappingConfiguration.RegisterProfiles());
+            ////Configure mapping profile, Auto Mapper Configurations
+            //_ = services.AddSingleton(MappingConfiguration.RegisterProfiles());
 
             //  Swager
             services.AddSwaggerGen(c =>
