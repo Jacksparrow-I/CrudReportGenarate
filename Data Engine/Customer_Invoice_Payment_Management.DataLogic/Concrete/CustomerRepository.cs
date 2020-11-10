@@ -38,7 +38,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
             return Items;
         }
 
-        public int AddCustomerData(TblCustomer CustomerModel, string CustomerNo)
+        public int AddCustomer(TblCustomer CustomerModel, string CustomerNo)
         {
             List<Customer> Items = new List<Customer>();
 

@@ -35,9 +35,9 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpPost("AddInvoiceData")]
-        public int AddInvoiceData([FromBody] TblInvoices InvoiceModel, string InvoiceNo)
+        public int AddInvoice([FromBody] TblInvoices InvoiceModel, string InvoiceNo)
         {
-            return _IInvoice.AddInvoiceData(InvoiceModel, InvoiceNo);
+            return _IInvoice.AddInvoice(InvoiceModel, InvoiceNo);
         }
 
         [HttpPost("UpdateInvoice/{InvoiceNo}")]

@@ -36,9 +36,9 @@ namespace CrudReportGenerate.Controllers
         }
 
         [HttpPost("AddPaymentData")]
-        public int AddPaymentData([FromBody] TblPayment PaymentModel, string PaymentNo)
+        public int AddPayment([FromBody] TblPayment PaymentModel, string PaymentNo)
         {
-            return _IPayment.AddPaymentData(PaymentModel, PaymentNo);
+            return _IPayment.AddPayment(PaymentModel, PaymentNo);
         }
 
         [HttpPost("UpdatePayment/{InvoiceNo}")]

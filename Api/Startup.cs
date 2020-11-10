@@ -93,7 +93,6 @@ namespace CrudReportGenarate
             services.AddScoped<IInvoice, InvoiceRepository>();
             services.AddScoped<IPayment, PaymentRepository>();
             services.AddScoped<IReport, ReportRepository>();
-            services.AddScoped<ILogin, LoginRepository>();
             services.AddScoped<IDashboard, DashboardRepository>();
             services.AddScoped<IAuthenticate, AuthenticateRepository>();
             #endregion
@@ -105,7 +104,6 @@ namespace CrudReportGenarate
             services.AddScoped<IInvoiceServices, InvoiceServices>();
             services.AddScoped<IPaymentServices, PaymentServices>();
             services.AddScoped<IReportServices, ReportServices>();
-            services.AddScoped<ILoginServices, LoginServices>();
             services.AddScoped<IDashboardServices, DashbordServices>();
             services.AddScoped<IAuthenticateServices, AuthenticateServices>();
             #endregion

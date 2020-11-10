@@ -35,10 +35,10 @@ namespace CrudReportGenerate.Controllers
             return _CustomerServices.GetCustomer();
         }
 
-        [HttpPost("AddCustomerData")]
-        public int AddCustomerData([FromBody] TblCustomer CustomerModel, string CustomerNo)
+        [HttpPost("AddCustomer")]
+        public int AddCustomer([FromBody] TblCustomer CustomerModel, string CustomerNo)
         {
-            return _CustomerServices.AddCustomerData(CustomerModel, CustomerNo);
+            return _CustomerServices.AddCustomer(CustomerModel, CustomerNo);
         }
 
         [HttpPost("UpdateCustomer/{CustomerNo}")]

@@ -10,7 +10,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Abstract
     public interface ICustomer
     {
         public List<Customer> GetCustomer(); 
-        public int AddCustomerData(TblCustomer CustomerModel, string CustomerNo);
+        public int AddCustomer(TblCustomer CustomerModel, string CustomerNo);
         public int UpdateCustomer(TblCustomer CustomerModel, string CustomerNo, string CustomerName);
         public int DeleteCustomer(string CustomerNo);
         public TblCustomer CustomerById(string CustomerNo);

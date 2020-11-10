@@ -16,9 +16,9 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
             _Invoice = Invoice;
 
         }
-        public int AddInvoiceData(TblInvoices InvoiceModel, string InvoiceNo)
+        public int AddInvoice(TblInvoices InvoiceModel, string InvoiceNo)
         {
-            return _Invoice.AddInvoiceData(InvoiceModel, InvoiceNo);
+            return _Invoice.AddInvoice(InvoiceModel, InvoiceNo);
         }
 
         public List<Invoice> AutoIncrementInvoiceNo()

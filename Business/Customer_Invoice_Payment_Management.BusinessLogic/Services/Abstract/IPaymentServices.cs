@@ -9,7 +9,7 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract
     public interface IPaymentServices
     {
         public List<Payment> GetPayment();
-        public int AddPaymentData(TblPayment PaymentModel, string PaymentNo);
+        public int AddPayment(TblPayment PaymentModel, string PaymentNo);
         public int UpdatePayment(TblPayment PaymentModel, string PaymentNo, string PaymentName);
         public int DeletePayment(string PaymentNo);
         public TblPayment PaymentById(string PaymentNo);

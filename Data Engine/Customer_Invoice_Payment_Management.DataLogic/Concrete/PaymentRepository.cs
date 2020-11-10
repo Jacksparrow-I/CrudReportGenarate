@@ -38,7 +38,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
             return Items;
         }
 
-        public int AddPaymentData(TblPayment PaymentModel, string PaymentNo)
+        public int AddPayment(TblPayment PaymentModel, string PaymentNo)
         {
             List<Payment> Items = new List<Payment>();
             List<Invoice> InvItems = new List<Invoice>();

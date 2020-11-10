@@ -17,9 +17,9 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
 
         }
 
-        public int AddPaymentData(TblPayment PaymentModel, string PaymentNo)
+        public int AddPayment(TblPayment PaymentModel, string PaymentNo)
         {
-            return _Payment.AddPaymentData(PaymentModel, PaymentNo);
+            return _Payment.AddPayment(PaymentModel, PaymentNo);
         }
 
         public List<Payment> AutoIncrementPaymentNo()

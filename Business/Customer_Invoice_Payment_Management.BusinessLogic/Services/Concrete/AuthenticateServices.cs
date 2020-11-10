@@ -35,7 +35,7 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
         {
             return _Authenticate.GetLogindetails();
         }
-
+ 
         public int Registration(User UserModel, string UserName)
         {
             return _Authenticate.Registration(UserModel, UserName);
