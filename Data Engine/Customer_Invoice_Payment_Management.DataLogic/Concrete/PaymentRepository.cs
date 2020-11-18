@@ -11,7 +11,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
     public class PaymentRepository : IPayment
     {
         string Val;
-        public List<Payment> GetPayment()
+        public List<Payment> GetPayments()
         {
             List<Payment> Items = new List<Payment>();
             try
@@ -78,10 +78,6 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
                     {
                         returnVal = -1;
                     }
-                    //else
-                    //{
-                    //    returnVal = dBContext.SaveChanges();
-                    //}
 
                     //Add AutoIncreament
 
@@ -244,7 +240,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
 
         }
 
-        public TblPayment PaymentById(string PaymentNo)
+        public TblPayment GetPaymentById(string PaymentNo)
         {
             TblPayment Cust = new TblPayment();
             try

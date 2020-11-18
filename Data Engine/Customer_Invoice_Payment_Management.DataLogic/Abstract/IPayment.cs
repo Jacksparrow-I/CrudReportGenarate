@@ -9,11 +9,11 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Abstract
 {
     public interface IPayment
     {
-        public List<Payment> GetPayment();
+        public List<Payment> GetPayments();
         public int AddPayment(TblPayment PaymentModel, string PaymentNo);
         public int UpdatePayment(TblPayment PaymentModel, string PaymentNo, string PaymentName);
         public int DeletePayment(string PaymentNo);
-        public TblPayment PaymentById(string PaymentNo);
+        public TblPayment GetPaymentById(string PaymentNo);
         public List<Invoice> GetInvoiceDetails(string Number);
         public List<Payment> AutoIncrementPaymentNo();
 

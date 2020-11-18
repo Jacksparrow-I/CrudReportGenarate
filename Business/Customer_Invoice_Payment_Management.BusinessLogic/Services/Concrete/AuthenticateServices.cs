@@ -16,9 +16,9 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
             _Authenticate = Authenticate;
         }
 
-        public Userdata Authenticate(Userdata Model)
+        public Userdata Login(Userdata Model)
         {
-            return _Authenticate.Authenticate(Model);
+            return _Authenticate.Login(Model);
         }
 
         public int Editprofile(User UserModel, string UserName, int UserId)

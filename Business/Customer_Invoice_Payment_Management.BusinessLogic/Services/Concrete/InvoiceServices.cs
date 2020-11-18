@@ -31,14 +31,14 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
             return _Invoice.DeleteInvoice(InvoiceNo);
         }
 
-        public List<Invoice> GetInvoice()
+        public List<Invoice> GetInvoices()
         {
-            return _Invoice.GetInvoice();
+            return _Invoice.GetInvoices();
         }
 
-        public TblInvoices InvoiceById(string InvoiceNo)
+        public TblInvoices GetInvoiceById(string InvoiceNo)
         {
-            return _Invoice.InvoiceById(InvoiceNo);
+            return _Invoice.GetInvoiceById(InvoiceNo);
         }
 
         public int UpdateInvoice(TblInvoices InvoiceModel, string InvoiceNo, string InvoiceName)

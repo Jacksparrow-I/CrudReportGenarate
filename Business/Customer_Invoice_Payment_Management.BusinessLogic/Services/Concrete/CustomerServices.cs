@@ -26,9 +26,9 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
             return _Customer.AutoIncrementCustomerNo();
         }
 
-        public TblCustomer CustomerById(string CustomerNo)
+        public TblCustomer GetCustomerById(string CustomerNo)
         {
-            return _Customer.CustomerById(CustomerNo);
+            return _Customer.GetCustomerById(CustomerNo);
         }
 
         public int DeleteCustomer(string CustomerNo)
@@ -36,9 +36,9 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
             return _Customer.DeleteCustomer(CustomerNo);
         }
 
-        public List<Customer> GetCustomer()
+        public List<Customer> GetCustomers()
         {
-            return _Customer.GetCustomer();
+            return _Customer.GetCustomers();
         }
 
         public int UpdateCustomer(TblCustomer CustomerModel, string CustomerNo, string CustomerName)

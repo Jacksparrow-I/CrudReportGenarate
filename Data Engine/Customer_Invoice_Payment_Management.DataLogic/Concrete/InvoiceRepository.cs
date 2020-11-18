@@ -11,7 +11,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
     public class InvoiceRepository : IInvoice
     {
         string Val;
-        public List<Invoice> GetInvoice()
+        public List<Invoice> GetInvoices()
         {
             List<Invoice> Items = new List<Invoice>();
             try
@@ -268,7 +268,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
 
         }
 
-        public TblInvoices InvoiceById(string InvoiceNo)
+        public TblInvoices GetInvoiceById(string InvoiceNo)
         {
             TblInvoices Cust = new TblInvoices();
             try

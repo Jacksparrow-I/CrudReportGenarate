@@ -9,7 +9,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Abstract
 {
     public interface IAuthenticate
     {
-        public Userdata Authenticate(Userdata Model);
+        public Userdata Login(Userdata Model);
         public List<User> GetLogindetails();
         public int Registration(User UserModel, string UserName);
         public int Editprofile(User UserModel, string UserName, int UserId);

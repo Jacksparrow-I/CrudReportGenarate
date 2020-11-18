@@ -37,14 +37,14 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Concrete
             return _Payment.GetInvoiceDetails(Number);
         }
 
-        public List<Payment> GetPayment()
+        public List<Payment> GetPayments()
         {
-            return _Payment.GetPayment();
+            return _Payment.GetPayments();
         }
 
-        public TblPayment PaymentById(string PaymentNo)
+        public TblPayment GetPaymentById(string PaymentNo)
         {
-            return _Payment.PaymentById(PaymentNo);
+            return _Payment.GetPaymentById(PaymentNo);
         }
 
         public int UpdatePayment(TblPayment PaymentModel, string PaymentNo, string PaymentName)

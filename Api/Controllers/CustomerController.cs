@@ -29,10 +29,10 @@ namespace CrudReportGenerate.Controllers
             _CustomerServices = CustomerServices;
         }
 
-        [HttpGet("GetCustomer")]
-        public List<Customer> GetCustomer()
+        [HttpGet("GetCustomers")]
+        public List<Customer> GetCustomers()
         {
-            return _CustomerServices.GetCustomer();
+            return _CustomerServices.GetCustomers();
         }
 
         [HttpPost("AddCustomer")]
@@ -59,10 +59,10 @@ namespace CrudReportGenerate.Controllers
             return _CustomerServices.AutoIncrementCustomerNo();
         }
 
-        [HttpGet("CustomerById/{CustomerNo}")]
-        public TblCustomer CustomerById(string CustomerNo)
+        [HttpGet("GetCustomerById/{CustomerNo}")]
+        public TblCustomer GetCustomerById(string CustomerNo)
         {
-            return _CustomerServices.CustomerById(CustomerNo);
+            return _CustomerServices.GetCustomerById(CustomerNo);
         }
 
 

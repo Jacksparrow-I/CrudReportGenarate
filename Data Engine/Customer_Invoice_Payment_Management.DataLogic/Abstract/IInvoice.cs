@@ -10,11 +10,11 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Abstract
 {
     public interface IInvoice
     {
-        public List<Invoice> GetInvoice();
+        public List<Invoice> GetInvoices();
         public int AddInvoice(TblInvoices InvoiceModel, string InvoiceNo);
         public int UpdateInvoice(TblInvoices InvoiceModel, string InvoiceNo, string InvoiceName);
         public int DeleteInvoice(string InvoiceNo);
-        public TblInvoices InvoiceById(string InvoiceNo);
+        public TblInvoices GetInvoiceById(string InvoiceNo);
         public List<Invoice> AutoIncrementInvoiceNo();
     }
 }

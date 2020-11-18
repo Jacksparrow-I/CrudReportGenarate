@@ -8,11 +8,11 @@ namespace Customer_Invoice_Payment_Management.BusinessLogic.Services.Abstract
 {
     public interface ICustomerServices
     {
-        public List<Customer> GetCustomer();
+        public List<Customer> GetCustomers();
         public int AddCustomer(TblCustomer CustomerModel, string CustomerNo);
         public int UpdateCustomer(TblCustomer CustomerModel, string CustomerNo, string CustomerName);
         public int DeleteCustomer(string CustomerNo);
-        public TblCustomer CustomerById(string CustomerNo);
+        public TblCustomer GetCustomerById(string CustomerNo);
         public List<Customer> AutoIncrementCustomerNo();
     }
 }

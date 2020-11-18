@@ -46,7 +46,7 @@ namespace CrudReportGenerate.Controllers
         [HttpPost]//Login
         public IActionResult Post([FromBody] Userdata Model)
         {
-            var user = _authenticateService.Authenticate(Model);
+            var user = _authenticateService.Login(Model);
 
             if (user == null)
             {

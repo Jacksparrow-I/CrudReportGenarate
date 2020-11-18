@@ -28,10 +28,10 @@ namespace CrudReportGenerate.Controllers
             _IInvoice = TblInvoice;
         }
 
-        [HttpGet("GetInvoice")]
-        public List<Invoice> GetInvoice()
+        [HttpGet("GetInvoices")]
+        public List<Invoice> GetInvoices()
         {
-            return _IInvoice.GetInvoice();
+            return _IInvoice.GetInvoices();
         }
 
         [HttpPost("AddInvoiceData")]
@@ -59,10 +59,10 @@ namespace CrudReportGenerate.Controllers
             return _IInvoice.AutoIncrementInvoiceNo();
         }
 
-        [HttpGet("InvoiceById/{InvoiceNo}")]
-        public TblInvoices InvoiceById(string InvoiceNo)
+        [HttpGet("GetInvoiceById/{InvoiceNo}")]
+        public TblInvoices GetInvoiceById(string InvoiceNo)
         {
-            return _IInvoice.InvoiceById(InvoiceNo);
+            return _IInvoice.GetInvoiceById(InvoiceNo);
         }
     }
 }

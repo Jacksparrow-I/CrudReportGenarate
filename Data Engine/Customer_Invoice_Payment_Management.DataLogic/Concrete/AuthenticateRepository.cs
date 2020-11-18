@@ -225,7 +225,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
 
         }
 
-        public Userdata Authenticate(Userdata Model)
+        public Userdata Login(Userdata Model)
         {
 
             List<Userdata> users = new List<Userdata>();
@@ -240,6 +240,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
                     cust.Password = it.Password;
                     cust.FirstName = it.FirstName;
                     cust.UserId = it.UserId;
+                    cust.Usertype = it.Usertype;
                     users.Add(cust);
                 }
             }

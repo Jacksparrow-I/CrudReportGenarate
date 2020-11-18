@@ -12,7 +12,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
     {
         string Val;
 
-        public List<Customer> GetCustomer()
+        public List<Customer> GetCustomers()
         {
             List<Customer> Items = new List<Customer>();
             try
@@ -235,7 +235,7 @@ namespace Customer_Invoice_Payment_Management.DataLogic.Concrete
 
         }
 
-        public TblCustomer CustomerById(string CustomerNo)
+        public TblCustomer GetCustomerById(string CustomerNo)
         {
             TblCustomer Cust = new TblCustomer();
             try

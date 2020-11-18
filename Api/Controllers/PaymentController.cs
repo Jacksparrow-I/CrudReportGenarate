@@ -29,10 +29,10 @@ namespace CrudReportGenerate.Controllers
             _IPayment = TblPayment;
         }
 
-        [HttpGet("GetPayment")]
-        public List<Payment> GetPayment()
+        [HttpGet("GetPayments")]
+        public List<Payment> GetPayments()
         {
-            return _IPayment.GetPayment();
+            return _IPayment.GetPayments();
         }
 
         [HttpPost("AddPaymentData")]
@@ -60,10 +60,10 @@ namespace CrudReportGenerate.Controllers
             return _IPayment.AutoIncrementPaymentNo();
         }
 
-        [HttpGet("PaymentById/{PaymentNo}")]
-        public TblPayment PaymentById(string PaymentNo)
+        [HttpGet("GetPaymentById/{PaymentNo}")]
+        public TblPayment GetPaymentById(string PaymentNo)
         {
-            return _IPayment.PaymentById(PaymentNo);
+            return _IPayment.GetPaymentById(PaymentNo);
         }
 
         [HttpGet("GetInvoiceDetails/{Number}")]
